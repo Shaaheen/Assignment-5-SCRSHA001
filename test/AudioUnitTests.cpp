@@ -23,6 +23,6 @@ TEST_CASE("Save and load"){
     int channel = 1;
     int rate = 44100;
     Audio<int8_t,int8_t> audTest = Audio<int8_t,int8_t>(fileName,channel,rate);
-    audTest.saveAudio("samp2.raw");
+    audTest.saveAudio("samp2");
 
 }

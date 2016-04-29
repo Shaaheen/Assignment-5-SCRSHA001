@@ -14,7 +14,8 @@
 namespace SCRSHA001{
     //Generic params BitType : int8_t or int16_t ChannelType: intN_t or pair<intN_t,intN_t>
     template <typename BitType,typename ChannelType>
-    class Audio {
+
+    class Audio{
     private:
         std::vector<ChannelType> audioData;
         int channels;
@@ -42,7 +43,7 @@ namespace SCRSHA001{
                         BitType sampleR;
                         input.read((char *) buffer2, sizeof(BitType)); //read in sample right ear
 
-                        audioData[i] = std::make_pair(buffer , buffer2); // will be pair<intN_t,intN_t>(sample,sampleR)
+                        //audioData[i] = (ChannelType) std::make_pair(buffer , buffer2); // will be pair<intN_t,intN_t>(sample,sampleR)
                     }
                     else{
                         audioData[i] = (*(BitType*) buffer); //int(sample)
@@ -69,25 +70,13 @@ namespace SCRSHA001{
         }
 
         void saveAudio(const std::string &outFileName) {
-            std::ofstream output(outFileName,std::ios::binary | std::ios::out);
+            std::string fullName = outFileName + "_"  + std::to_string(sampleRateInHz) + "_" + std::to_string(sizeof(BitType)*8) + "_mono.raw";
+            std::ofstream output(fullName,std::ios::binary | std::ios::out);
 
             if (output.is_open()){
-                if (channels ==1){
-                    std::cout<<reinterpret_cast<const char *>(&audioData[0])<<std::endl;
-                }
-
-                 //output.write(&audioData[0],numberOfSamples*channels);
-            for (int i = 0; i < audioData.size(); ++i) {
-                if (channels==1){
-                    //char buffer[sizeof(BitType)];
+                for (int i = 0; i < audioData.size(); ++i) {
                     output.write(reinterpret_cast<const char *>(&audioData[i]), sizeof(BitType)); //sizeof(BitType));
                 }
-                else{
-                    //output.write(reinterpret_cast<const char *>(&audioData[i]), sizeof(BitType));
-                    //output.write(reinterpret_cast<const char *>(&audioData[i]), sizeof(BitType));
-                }
-                //output.write(audioData[i])
-            }
             }
             else{
                 std::cout<<"Could not write to File"<<std::endl;
@@ -95,6 +84,10 @@ namespace SCRSHA001{
             }
 
         }
+    };
+
+    class Audio<BitType>{
+
     };
 }
 
