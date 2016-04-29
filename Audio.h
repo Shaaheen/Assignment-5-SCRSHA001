@@ -86,7 +86,7 @@ namespace SCRSHA001{
         }
     };
 
-    class Audio<BitType>{
+    template <typename BitType> class Audio<BitType,std::pair<BitType,BitType>>{
 
     };
 }
