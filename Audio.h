@@ -62,13 +62,23 @@ namespace SCRSHA001{
         }
 
     public:
+        //Main constructor
         Audio(const std::string &fileName, int &chan, int &rate)  : channels(chan), sampleRateInHz(rate){
             loadAudio(fileName);
         }
 
+        //constructor
+        Audio(int samples,int length, std::vector<BitType> vec, int &chan, int &rate)
+                : channels(chan), sampleRateInHz(rate), numberOfSamples(samples),lengthOfAudioSeconds(length),audioData(vec){
+        }
+
+        //Copy constructor
         Audio(const Audio &rhs): channels(rhs.channels),sampleRateInHz(rhs.sampleRateInHz)
                 ,numberOfSamples(rhs.numberOfSamples),lengthOfAudioSeconds(rhs.lengthOfAudioSeconds),audioData(rhs.audioData){ }
 
+        /*
+         * Saves the audio data into file
+         */
         void saveAudio(const std::string &outFileName) {
             std::string fullName = outFileName + "_"  + std::to_string(sampleRateInHz) + "_" + std::to_string(sizeof(BitType)*8) + "_mono.raw";
             std::ofstream output(fullName,std::ios::binary | std::ios::out);
@@ -84,6 +94,9 @@ namespace SCRSHA001{
             }
         }
 
+        /*
+         * Returns the size of the file
+         */
         long filesize(const std::string &filename){
             std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
             return (long) in.tellg();
@@ -118,20 +131,34 @@ namespace SCRSHA001{
          */
         Audio operator+(const Audio &rhs) {
             Audio concatenated(*this);
-            //Lambda function to increase audio data
             for (int i = 0; i < audioData.size(); ++i) {
-                BitType sumOfSound = audioData[i] + rhs.audioData[i];
+                BitType sumOfSound = audioData[i] + rhs.audioData[i]; //add data samples
                 if (sumOfSound > std::numeric_limits<BitType>::max()){
-                    sumOfSound = std::numeric_limits<BitType>::max();
+                    sumOfSound = std::numeric_limits<BitType>::max(); //clamp to max if too large
                 }
                 concatenated.audioData[i] = sumOfSound;
             }
             return concatenated;
         }
 
+        /*
+         * Cuts out a range of samples from audio
+         */
+        Audio operator^(std::pair<int, int> rangeToBeCut) {
+            //Create all new variables as will be a diff number of samples and length - Can't just copy as diff vals
+            int numSamplesWithCutOuts = numberOfSamples - (rangeToBeCut.second - rangeToBeCut.first);
+            int cutLength = (int) (numSamplesWithCutOuts / ((float) sampleRateInHz));
+            std::vector<ChannelType> cutAudioData;
+            for (int i = 0; i < audioData.size(); ++i) {
+                if ( i < rangeToBeCut.first || i>rangeToBeCut.second){
+                    cutAudioData.push_back(audioData[i]); //don't know index so use push back
+                }
+            }
 
-
-
+            //Create cut out audio object
+            Audio<BitType,ChannelType> audioWithCutOut(numSamplesWithCutOuts,cutLength,cutAudioData,channels,sampleRateInHz);
+            return audioWithCutOut;
+        }
 
     };
 
@@ -182,6 +209,11 @@ namespace SCRSHA001{
         //Main constructor
         Audio(const std::string &fileName, int &chan, int &rate)  : channels(chan), sampleRateInHz(rate){
             loadAudio(fileName);
+        }
+
+        //constructor
+        Audio(int samples,int length, std::vector<std::pair<BitType,BitType>> vec, int &chan, int &rate)
+                : channels(chan), sampleRateInHz(rate), numberOfSamples(samples),lengthOfAudioSeconds(length),audioData(vec){
         }
 
         //Copy constructor
@@ -261,6 +293,25 @@ namespace SCRSHA001{
             }
             //concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
             return concatenated;
+        }
+
+        /*
+         * Cuts out a range of samples from audio
+         */
+        Audio operator^(std::pair<int, int> rangeToBeCut) {
+            //Create all new variables as will be a diff number of samples and length - Can't just copy as diff vals
+            int numSamplesWithCutOuts = numberOfSamples - (rangeToBeCut.second - rangeToBeCut.first);
+            int cutLength = (int) (numSamplesWithCutOuts / ((float) sampleRateInHz));
+            std::vector<std::pair<BitType,BitType>> cutAudioData;
+            for (int i = 0; i < audioData.size(); ++i) {
+                if ( i < rangeToBeCut.first || i>rangeToBeCut.second){
+                    cutAudioData.push_back(audioData[i]); //don't know index so use push back
+                }
+            }
+
+            //Create cut out audio object
+            Audio<BitType,std::pair<BitType,BitType>> audioWithCutOut(numSamplesWithCutOuts,cutLength,cutAudioData,channels,sampleRateInHz);
+            return audioWithCutOut;
         }
     };
 }
