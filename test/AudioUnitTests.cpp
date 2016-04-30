@@ -46,12 +46,12 @@ TEST_CASE("Concatanate test"){
     int rate2 = 44100;
     Audio<int8_t,int8_t> audTest2 = Audio<int8_t,int8_t>(fileName2,channe2,rate2);
 
-    Audio<int8_t,int8_t> addedAuds = audTest + audTest2;
+    Audio<int8_t,int8_t> addedAuds = audTest | audTest2;
 
     string testFile = "test/testCases/ConcatenTest_44100_8_mono.raw";
     Audio<int8_t,int8_t> expectedAudio = Audio<int8_t,int8_t>(testFile,channe2,rate2);
 
-
+    REQUIRE((expectedAudio==addedAuds) == true);
 
     SECTION("Stereo test"){
         string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";

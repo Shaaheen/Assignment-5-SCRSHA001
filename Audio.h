@@ -160,13 +160,15 @@ namespace SCRSHA001{
             return audioWithCutOut;
         }
 
+        /*
+         * For test class - Checks if two Audio classes are exactly the same
+         */
         bool operator==(const Audio &rhs){
-            if ( (this->audioData==rhs.audioData) ){
-                return true;
-            }
-            else{
-                return false;
-            }
+            return (audioData == rhs.audioData)
+                   && (channels == rhs.channels)
+                   && (sampleRateInHz == rhs.sampleRateInHz)
+                   && (numberOfSamples == rhs.numberOfSamples)
+                   && (lengthOfAudioSeconds == rhs.lengthOfAudioSeconds);
         }
 
     };
@@ -321,6 +323,17 @@ namespace SCRSHA001{
             //Create cut out audio object
             Audio<BitType,std::pair<BitType,BitType>> audioWithCutOut(numSamplesWithCutOuts,cutLength,cutAudioData,channels,sampleRateInHz);
             return audioWithCutOut;
+        }
+
+        /*
+         * For test class - Checks if two Audio classes are exactly the same
+         */
+        bool operator==(const Audio &rhs){
+            return (audioData == rhs.audioData)
+                   && (channels == rhs.channels)
+                   && (sampleRateInHz == rhs.sampleRateInHz)
+                   && (numberOfSamples == rhs.numberOfSamples)
+                   && (lengthOfAudioSeconds == rhs.lengthOfAudioSeconds);
         }
     };
 }
