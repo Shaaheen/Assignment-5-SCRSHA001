@@ -174,6 +174,13 @@ namespace SCRSHA001{
                    && (lengthOfAudioSeconds == rhs.lengthOfAudioSeconds);
         }
 
+        /*
+         * Function to reverse the order which the alements are ordered in audio data
+         */
+        void reverse(){
+            std::reverse(audioData.begin(),audioData.end());
+        }
+
     };
 
     template <typename BitType>

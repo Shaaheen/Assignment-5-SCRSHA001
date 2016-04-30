@@ -184,3 +184,13 @@ TEST_CASE("Cut out test"){
         REQUIRE((expectedAudio == resultAuds) == true);
     }
 }
+TEST_CASE("Reverse test"){
+    SECTION("Mono"){
+        string fileName = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
+        int channel = 1;
+        int rate = 44100;
+        Audio<int8_t,int8_t> audTest = Audio<int8_t,int8_t>(fileName,channel,rate);
+        (audTest.reverse());
+        audTest.saveAudio("Reversed");
+    }
+}
