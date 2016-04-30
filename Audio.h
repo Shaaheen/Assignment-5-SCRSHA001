@@ -109,6 +109,9 @@ namespace SCRSHA001{
             Audio concatenated(*this);
             //Add right hand audio onto end of first audio
             concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
+            //Adjust lengths
+            concatenated.lengthOfAudioSeconds = concatenated.lengthOfAudioSeconds + rhs.lengthOfAudioSeconds;
+            concatenated.numberOfSamples = concatenated.numberOfSamples + rhs.numberOfSamples;
             return concatenated;
         }
 
@@ -146,7 +149,7 @@ namespace SCRSHA001{
          */
         Audio operator^(std::pair<int, int> rangeToBeCut) {
             //Create all new variables as will be a diff number of samples and length - Can't just copy as diff vals
-            int numSamplesWithCutOuts = numberOfSamples - (rangeToBeCut.second - rangeToBeCut.first);
+            int numSamplesWithCutOuts = numberOfSamples - (rangeToBeCut.second - rangeToBeCut.first) - 1;
             int cutLength = (int) (numSamplesWithCutOuts / ((float) sampleRateInHz));
             std::vector<ChannelType> cutAudioData;
             for (int i = 0; i < audioData.size(); ++i) {
@@ -264,7 +267,11 @@ namespace SCRSHA001{
          */
         Audio operator|(const Audio &rhs) {
             Audio concatenated(*this);
+            //add elements starting from the beginning of rhs data to end of concatanet audio
             concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
+            //Adjust lengths
+            concatenated.lengthOfAudioSeconds = concatenated.lengthOfAudioSeconds + rhs.lengthOfAudioSeconds;
+            concatenated.numberOfSamples = concatenated.numberOfSamples + rhs.numberOfSamples;
             return concatenated;
         }
 
@@ -311,7 +318,7 @@ namespace SCRSHA001{
          */
         Audio operator^(std::pair<int, int> rangeToBeCut) {
             //Create all new variables as will be a diff number of samples and length - Can't just copy as diff vals
-            int numSamplesWithCutOuts = numberOfSamples - (rangeToBeCut.second - rangeToBeCut.first);
+            int numSamplesWithCutOuts = numberOfSamples - (rangeToBeCut.second - rangeToBeCut.first) -1;
             int cutLength = (int) (numSamplesWithCutOuts / ((float) sampleRateInHz));
             std::vector<std::pair<BitType,BitType>> cutAudioData;
             for (int i = 0; i < audioData.size(); ++i) {
