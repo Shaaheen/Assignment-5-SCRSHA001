@@ -202,3 +202,23 @@ TEST_CASE("Reverse test"){
         //todo do this quick test case
     }
 }
+TEST_CASE("Range added test"){
+    SECTION("Mono test"){
+        string fileName = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
+        int channel = 1;
+        int rate = 44100;
+        Audio<int8_t,int8_t> audTest = Audio<int8_t,int8_t>(fileName,channel,rate);
+
+        string fileName2 = "sample_input/countdown40sec_44100_signed_8bit_mono.raw";
+        int channe2 = 1;
+        int rate2 = 44100;
+        Audio<int8_t,int8_t> audTest2 = Audio<int8_t,int8_t>(fileName2,channe2,rate2);
+
+
+        pair<int,int> range = make_pair(200000,400000);
+        Audio<int8_t,int8_t> rangeAddedResult = audTest.rangeAdd(audTest2,range);
+        rangeAddedResult.saveAudio("RangeAdded");
+        //(audTest ^ range).saveAudio("CutOutTest");
+
+    }
+}
