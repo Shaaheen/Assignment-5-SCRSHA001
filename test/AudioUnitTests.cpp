@@ -191,6 +191,14 @@ TEST_CASE("Reverse test"){
         int rate = 44100;
         Audio<int8_t,int8_t> audTest = Audio<int8_t,int8_t>(fileName,channel,rate);
         (audTest.reverse());
-        audTest.saveAudio("Reversed");
+
+        string testFile = "test/testCases/Reversed_44100_8_mono.raw";
+        Audio<int8_t,int8_t> expectedAudio = Audio<int8_t,int8_t>(testFile,channel,rate);
+
+        REQUIRE((expectedAudio == audTest) == true);
+
+    }
+    SECTION("Stereo"){
+        //todo do this quick test case
     }
 }
