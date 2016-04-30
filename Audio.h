@@ -14,7 +14,6 @@
 namespace SCRSHA001{
     //Generic params BitType : int8_t or int16_t ChannelType: intN_t or pair<intN_t,intN_t>
     template <typename BitType,typename ChannelType>
-
     class Audio{
     private:
         std::vector<ChannelType> audioData;
@@ -23,6 +22,9 @@ namespace SCRSHA001{
         int numberOfSamples;
         int lengthOfAudioSeconds;
 
+        /*
+         * Loads audio file using binary reading
+         */
         void loadAudio(const std::string &fileName){
             std::ifstream input(fileName,std::ios::binary| std::ios::in); //get file in binary
 
@@ -31,7 +33,7 @@ namespace SCRSHA001{
                 this->numberOfSamples = fileSize/( sizeof(BitType) * channels);
                 this->lengthOfAudioSeconds = (int) (numberOfSamples / ((float) sampleRateInHz));
 
-                audioData.resize(numberOfSamples);
+                audioData.resize(numberOfSamples); //Reserve space for samples
 
                 for (int i = 0; i < numberOfSamples; ++i) {
                     char buffer[sizeof(BitType)];
@@ -43,7 +45,7 @@ namespace SCRSHA001{
                         BitType sampleR;
                         input.read((char *) buffer2, sizeof(BitType)); //read in sample right ear
 
-                        //audioData[i] = (ChannelType) std::make_pair(buffer , buffer2); // will be pair<intN_t,intN_t>(sample,sampleR)
+                        //audioData[i] = (ChannelType) (std::make_pair(buffer , buffer2)); // will be pair<intN_t,intN_t>(sample,sampleR)
                     }
                     else{
                         audioData[i] = (*(BitType*) buffer); //int(sample)
@@ -59,6 +61,7 @@ namespace SCRSHA001{
 
         }
 
+    protected:
         long filesize(const std::string &filename){
             std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
             return (long) in.tellg();
@@ -68,6 +71,9 @@ namespace SCRSHA001{
         Audio(const std::string &fileName, int &chan, int &rate)  : channels(chan), sampleRateInHz(rate){
             loadAudio(fileName);
         }
+
+        Audio(const Audio &rhs): channels(rhs.channels),sampleRateInHz(rhs.sampleRateInHz)
+                ,numberOfSamples(rhs.numberOfSamples),lengthOfAudioSeconds(rhs.lengthOfAudioSeconds),audioData(rhs.audioData){ }
 
         void saveAudio(const std::string &outFileName) {
             std::string fullName = outFileName + "_"  + std::to_string(sampleRateInHz) + "_" + std::to_string(sizeof(BitType)*8) + "_mono.raw";
@@ -82,12 +88,97 @@ namespace SCRSHA001{
                 std::cout<<"Could not write to File"<<std::endl;
                 exit(0);
             }
-
         }
+
+        Audio operator|(const Audio &rhs) {
+            //Audio * rhsAud = dynamic_cast<Audio*>(this);
+            Audio concatenated(*this);
+            //Add right hand audio onto end of first audio
+            concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
+            return concatenated;
+        }
+
     };
 
-    template <typename BitType> class Audio<BitType,std::pair<BitType,BitType>>{
+    template <typename BitType>
+    class Audio<BitType,std::pair<BitType,BitType>>{
+    private:
+        std::vector<std::pair<BitType,BitType>> audioData;
+        int channels;
+        int sampleRateInHz;
+        int numberOfSamples;
+        int lengthOfAudioSeconds;
 
+        /*
+         * Loads audio file using binary reading
+         */
+        void loadAudio(const std::string &fileName){
+            std::ifstream input(fileName,std::ios::binary| std::ios::in); //get file in binary
+
+            if (input.is_open()){
+                long fileSize =  filesize(fileName);
+                this->numberOfSamples = fileSize/( sizeof(BitType) * channels);
+                this->lengthOfAudioSeconds = (int) (numberOfSamples / ((float) sampleRateInHz));
+
+                audioData.resize(numberOfSamples); //Reserve space for samples
+
+                for (int i = 0; i < numberOfSamples; ++i) {
+                    char buffer[sizeof(BitType)];
+                    BitType sample;
+                    input.read((char *) &sample, sizeof(BitType)); //read in sample
+
+                    char buffer2[sizeof(BitType)];
+                    BitType sampleR;
+                    input.read((char *) &sampleR, sizeof(BitType)); //read in sample right ear
+
+                    audioData[i] = (std::make_pair(sample, sampleR)); // will be pair<intN_t,intN_t>(sample,sampleR);
+                }
+                input.close();
+                //return audioData;
+            }
+            else{
+                std::cout<<"Error: Can't open file"<<std::endl;
+                exit(0);
+            }
+
+        }
+
+    public:
+        Audio(const std::string &fileName, int &chan, int &rate)  : channels(chan), sampleRateInHz(rate){
+            loadAudio(fileName);
+        }
+
+        Audio(const Audio &rhs): channels(rhs.channels),sampleRateInHz(rhs.sampleRateInHz)
+                ,numberOfSamples(rhs.numberOfSamples),lengthOfAudioSeconds(rhs.lengthOfAudioSeconds),audioData(rhs.audioData){ }
+
+        void saveAudio(const std::string &outFileName) {
+            std::string fullName = outFileName + "_"  + std::to_string(sampleRateInHz) + "_" + std::to_string(sizeof(BitType)*8) + "_stereo.raw";
+            std::ofstream output(fullName,std::ios::binary | std::ios::out);
+
+            if (output.is_open()){
+                for (int i = 0; i < audioData.size(); ++i) {
+                    output.write(reinterpret_cast<const char *>(&audioData[i].first), sizeof(BitType)); //sizeof(BitType));
+                    output.write(reinterpret_cast<const char *>(&audioData[i].second), sizeof(BitType));
+                }
+            }
+            else{
+                std::cout<<"Could not write to File"<<std::endl;
+                exit(0);
+            }
+        }
+
+        long filesize(const std::string &filename){
+            std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
+            return (long) in.tellg();
+        }
+
+        Audio operator|(const Audio &rhs) {
+            //Audio * rhsAud = dynamic_cast<Audio*>(this);
+            Audio concatenated(*this);
+            //Add right hand audio onto end of first audio
+            concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
+            return concatenated;
+        }
     };
 }
 

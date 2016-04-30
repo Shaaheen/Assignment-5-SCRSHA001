@@ -9,20 +9,3 @@
 using namespace std;
 using namespace SCRSHA001;
 
-TEST_CASE("Type tests"){
-    cout<< sizeof(pair<int16_t,int16_t>)<<endl;
-    cout<< sizeof(int16_t)<<endl;
-
-    ofstream output("Test.raw",std::ios::binary | std::ios::out);
-    if (output.is_open()){
-        //output.write(pair<int,int>(7,6), sizeof(pair<int,int>));
-    }
-}
-TEST_CASE("Save and load"){
-    string fileName = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
-    int channel = 1;
-    int rate = 44100;
-    Audio<int8_t,int8_t> audTest = Audio<int8_t,int8_t>(fileName,channel,rate);
-    audTest.saveAudio("samp2");
-
-}
