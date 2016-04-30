@@ -61,5 +61,48 @@ TEST_CASE("Concatanate test"){
 
         (audTest | audTest2).saveAudio("ConcatenTestS");
     }
+}
+TEST_CASE("Volume test"){
+    string fileName = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
+    int channel = 1;
+    int rate = 44100;
+    Audio<int8_t,int8_t> audTest = Audio<int8_t,int8_t>(fileName,channel,rate);
+    pair<float,float> volumes = make_pair(5.0,0.0);
+    (audTest * volumes).saveAudio("VolumeTest");
 
+    SECTION("Stereo test"){
+        string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
+        int channel = 2;
+        int rate = 44100;
+        Audio<int16_t, pair<int16_t,int16_t>> audTest = Audio<int16_t, pair<int16_t,int16_t>>(fileName,channel,rate);
+        pair<float,float> volumes = make_pair(5.0,0.0);
+        (audTest * volumes).saveAudio("VolumeTestS");
+    }
+}
+TEST_CASE("Addition test"){
+    string fileName = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
+    int channel = 1;
+    int rate = 44100;
+    Audio<int8_t,int8_t> audTest = Audio<int8_t,int8_t>(fileName,channel,rate);
+
+    string fileName2 = "sample_input/frogs18sec_44100_signed_8bit_mono.raw";
+    int channe2 = 1;
+    int rate2 = 44100;
+    Audio<int8_t,int8_t> audTest2 = Audio<int8_t,int8_t>(fileName2,channe2,rate2);
+
+    (audTest + audTest2).saveAudio("AdditionTest");
+
+    SECTION("Stereo test"){
+        string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
+        int channel = 2;
+        int rate = 44100;
+        Audio<int16_t, pair<int16_t,int16_t>> audTest = Audio<int16_t, pair<int16_t,int16_t>>(fileName,channel,rate);
+
+        string fileName2 = "sample_input/frogs18sec_44100_signed_16bit_stereo.raw";
+        int channe2 = 2;
+        int rate2 = 44100;
+        Audio<int16_t, pair<int16_t,int16_t>> audTest2 = Audio<int16_t, pair<int16_t,int16_t>>(fileName2,channe2,rate2);
+
+        (audTest + audTest2).saveAudio("AdditionTestS");
+    }
 }

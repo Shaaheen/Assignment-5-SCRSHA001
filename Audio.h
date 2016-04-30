@@ -61,12 +61,6 @@ namespace SCRSHA001{
 
         }
 
-    protected:
-        long filesize(const std::string &filename){
-            std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
-            return (long) in.tellg();
-        }
-
     public:
         Audio(const std::string &fileName, int &chan, int &rate)  : channels(chan), sampleRateInHz(rate){
             loadAudio(fileName);
@@ -90,13 +84,55 @@ namespace SCRSHA001{
             }
         }
 
+        long filesize(const std::string &filename){
+            std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
+            return (long) in.tellg();
+        }
+
+        /*
+         * Conatanates two audio data vectors together to make one large audio vector
+         */
         Audio operator|(const Audio &rhs) {
-            //Audio * rhsAud = dynamic_cast<Audio*>(this);
             Audio concatenated(*this);
             //Add right hand audio onto end of first audio
             concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
             return concatenated;
         }
+
+        /*
+         * Increases audio by a volume factor
+         */
+        Audio operator*(std::pair<float, float> volumeFactor) {
+            Audio concatenated(*this);
+            //Lambda function to increase audio data
+            std::transform(this->audioData.begin(),this->audioData.end(),concatenated.audioData.begin(),
+                [volumeFactor](BitType value){ return value*volumeFactor.first;}
+            );
+            //concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
+            return concatenated;
+        }
+
+        /*
+         * Adds sound aplitudes together
+         * - adds two audio vectors together and clamps on maximum
+         */
+        Audio operator+(const Audio &rhs) {
+            Audio concatenated(*this);
+            //Lambda function to increase audio data
+            for (int i = 0; i < audioData.size(); ++i) {
+                BitType sumOfSound = audioData[i] + rhs.audioData[i];
+                if (sumOfSound > std::numeric_limits<BitType>::max()){
+                    sumOfSound = std::numeric_limits<BitType>::max();
+                }
+                concatenated.audioData[i] = sumOfSound;
+            }
+            //concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
+            return concatenated;
+        }
+
+
+
+
 
     };
 
@@ -151,6 +187,9 @@ namespace SCRSHA001{
         Audio(const Audio &rhs): channels(rhs.channels),sampleRateInHz(rhs.sampleRateInHz)
                 ,numberOfSamples(rhs.numberOfSamples),lengthOfAudioSeconds(rhs.lengthOfAudioSeconds),audioData(rhs.audioData){ }
 
+        /*
+         * Saves the audio data into file
+         */
         void saveAudio(const std::string &outFileName) {
             std::string fullName = outFileName + "_"  + std::to_string(sampleRateInHz) + "_" + std::to_string(sizeof(BitType)*8) + "_stereo.raw";
             std::ofstream output(fullName,std::ios::binary | std::ios::out);
@@ -167,18 +206,38 @@ namespace SCRSHA001{
             }
         }
 
+        /*
+         * Returns the size of the file
+         */
         long filesize(const std::string &filename){
             std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
             return (long) in.tellg();
         }
 
+        /*
+         * Concatenates two audio's together
+         * -Joins audio vectors together - rhs added onto end of lhs
+         */
         Audio operator|(const Audio &rhs) {
-            //Audio * rhsAud = dynamic_cast<Audio*>(this);
             Audio concatenated(*this);
-            //Add right hand audio onto end of first audio
             concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
             return concatenated;
         }
+
+        /*
+         * Increases audio by a volume factor - Can be diff for L/R (Stereo)
+         */
+        Audio operator*(std::pair<float, float> volumeFactor) {
+            Audio concatenated(*this);
+            //Lambda function to increase audio data by pairs
+            std::transform(this->audioData.begin(),this->audioData.end(),concatenated.audioData.begin(),
+                           [volumeFactor](std::pair<BitType,BitType> value){
+                               return std::make_pair(value.first*volumeFactor.first,value.second*volumeFactor.second);
+                           }
+            );
+            return concatenated;
+        }
+
     };
 }
 
