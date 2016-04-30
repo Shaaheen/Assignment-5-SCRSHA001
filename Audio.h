@@ -126,7 +126,6 @@ namespace SCRSHA001{
                 }
                 concatenated.audioData[i] = sumOfSound;
             }
-            //concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
             return concatenated;
         }
 
@@ -180,10 +179,12 @@ namespace SCRSHA001{
         }
 
     public:
+        //Main constructor
         Audio(const std::string &fileName, int &chan, int &rate)  : channels(chan), sampleRateInHz(rate){
             loadAudio(fileName);
         }
 
+        //Copy constructor
         Audio(const Audio &rhs): channels(rhs.channels),sampleRateInHz(rhs.sampleRateInHz)
                 ,numberOfSamples(rhs.numberOfSamples),lengthOfAudioSeconds(rhs.lengthOfAudioSeconds),audioData(rhs.audioData){ }
 
@@ -238,6 +239,29 @@ namespace SCRSHA001{
             return concatenated;
         }
 
+        /*
+         * Adds sound aplitudes together
+         * - adds two audio vectors together and clamps on maximum
+         */
+        Audio operator+(const Audio &rhs) {
+            Audio concatenated(*this);
+            //Lambda function to increase audio data
+            for (int i = 0; i < audioData.size(); ++i) {
+                BitType sumOfSoundLeft = audioData[i].first + rhs.audioData[i].first; //adds em up
+                if (sumOfSoundLeft > std::numeric_limits<BitType>::max()){ //clamp on left
+                    sumOfSoundLeft = std::numeric_limits<BitType>::max();
+                }
+
+                BitType sumOfSoundRight = audioData[i].second + rhs.audioData[i].second;
+                if (sumOfSoundRight > std::numeric_limits<BitType>::max()){ //clamp on right
+                    sumOfSoundRight = std::numeric_limits<BitType>::max();
+                }
+                concatenated.audioData[i].first = sumOfSoundLeft;
+                concatenated.audioData[i].second = sumOfSoundRight;
+            }
+            //concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
+            return concatenated;
+        }
     };
 }
 
