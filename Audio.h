@@ -160,6 +160,15 @@ namespace SCRSHA001{
             return audioWithCutOut;
         }
 
+        bool operator==(const Audio &rhs){
+            if ( (this->audioData==rhs.audioData) ){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
     };
 
     template <typename BitType>

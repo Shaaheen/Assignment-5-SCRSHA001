@@ -46,7 +46,12 @@ TEST_CASE("Concatanate test"){
     int rate2 = 44100;
     Audio<int8_t,int8_t> audTest2 = Audio<int8_t,int8_t>(fileName2,channe2,rate2);
 
-    (audTest | audTest2).saveAudio("ConcatenTest");
+    Audio<int8_t,int8_t> addedAuds = audTest + audTest2;
+
+    string testFile = "test/testCases/ConcatenTest_44100_8_mono.raw";
+    Audio<int8_t,int8_t> expectedAudio = Audio<int8_t,int8_t>(testFile,channe2,rate2);
+
+
 
     SECTION("Stereo test"){
         string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
@@ -104,5 +109,22 @@ TEST_CASE("Addition test"){
         Audio<int16_t, pair<int16_t,int16_t>> audTest2 = Audio<int16_t, pair<int16_t,int16_t>>(fileName2,channe2,rate2);
 
         (audTest + audTest2).saveAudio("AdditionTestS");
+    }
+}
+TEST_CASE("Cut out test"){
+    string fileName = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
+    int channel = 1;
+    int rate = 44100;
+    Audio<int8_t,int8_t> audTest = Audio<int8_t,int8_t>(fileName,channel,rate);
+    pair<int,int> range = make_pair(0,200000);
+    (audTest ^ range).saveAudio("CutOutTest");
+
+    SECTION("Stereo test"){
+        string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
+        int channel = 2;
+        int rate = 44100;
+        Audio<int16_t, pair<int16_t,int16_t>> audTest = Audio<int16_t, pair<int16_t,int16_t>>(fileName,channel,rate);
+        pair<int,int> range = make_pair(0,300000);
+        (audTest ^ range).saveAudio("CutOutTestS");
     }
 }
