@@ -214,11 +214,13 @@ TEST_CASE("Range added test"){
         int rate2 = 44100;
         Audio<int8_t,int8_t> audTest2 = Audio<int8_t,int8_t>(fileName2,channe2,rate2);
 
-
         pair<int,int> range = make_pair(200000,400000);
         Audio<int8_t,int8_t> rangeAddedResult = audTest.rangeAdd(audTest2,range);
-        rangeAddedResult.saveAudio("RangeAdded");
-        //(audTest ^ range).saveAudio("CutOutTest");
+
+        string testFile = "test/testCases/RangeAdded_44100_8_mono.raw";
+        Audio<int8_t,int8_t> expectedAudio = Audio<int8_t,int8_t>(testFile,channel,rate);
+
+        REQUIRE((expectedAudio == rangeAddedResult) == true);
 
     }
 }

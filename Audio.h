@@ -384,6 +384,34 @@ namespace SCRSHA001{
                    && (numberOfSamples == rhs.numberOfSamples)
                    && (lengthOfAudioSeconds == rhs.lengthOfAudioSeconds);
         }
+
+        /*
+         * Function to select two (same length) sample ranges from two signals and add them together
+         */
+        Audio rangeAdd(const Audio &rhs,std::pair<int, int> rangeToBeCut){
+            Audio finalRangeAdded(*this);
+
+            //Extracted so can use "+" operator to add whole ranges at once
+
+            //Extract range from lhs audio object
+            Audio audioWithRangeExtract1(*this);
+            audioWithRangeExtract1.audioData.clear();
+            audioWithRangeExtract1.audioData.resize(rangeToBeCut.second - rangeToBeCut.first);
+            std::copy(audioData.begin()+rangeToBeCut.first,audioData.begin() + rangeToBeCut.second,audioWithRangeExtract1.audioData.begin());
+
+            //Extract range from rhs audio object
+            Audio audioWithRangeExtract2(rhs);
+            audioWithRangeExtract2.audioData.clear();
+            audioWithRangeExtract2.audioData.resize(rangeToBeCut.second - rangeToBeCut.first);
+            std::copy(rhs.audioData.begin()+rangeToBeCut.first,rhs.audioData.begin() + rangeToBeCut.second,audioWithRangeExtract2.audioData.begin());
+
+            //Add the ranges together
+            Audio rangesAdded = audioWithRangeExtract1 + audioWithRangeExtract2;
+            //Copy new range into original copy
+            std::copy(rangesAdded.audioData.begin(),rangesAdded.audioData.end(),finalRangeAdded.audioData.begin()+rangeToBeCut.first);
+
+            return finalRangeAdded;
+        }
     };
 }
 
