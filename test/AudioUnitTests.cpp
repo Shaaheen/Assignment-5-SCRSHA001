@@ -242,3 +242,19 @@ TEST_CASE("Range added test"){
         REQUIRE((expectedAudio == rangeAddedResult) == true);
     }
 }
+
+TEST_CASE("Compute RMS test"){
+    SECTION("Mono test"){
+        string fileName2 = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
+        int channe2 = 1;
+        int rate2 = 44100;
+        Audio<int8_t,int8_t> audTest = Audio<int8_t,int8_t>(fileName2,channe2,rate2);
+
+        float expectedRMS = 5.77679;
+
+        REQUIRE(expectedRMS == audTest.computeRMS());
+    }
+    SECTION("Stereo test"){
+
+    }
+}
