@@ -221,6 +221,24 @@ TEST_CASE("Range added test"){
         Audio<int8_t,int8_t> expectedAudio = Audio<int8_t,int8_t>(testFile,channel,rate);
 
         REQUIRE((expectedAudio == rangeAddedResult) == true);
+    }
+    SECTION("Stereo test"){
+        string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
+        int channel = 2;
+        int rate = 44100;
+        Audio<int16_t, pair<int16_t,int16_t>> audTest = Audio<int16_t, pair<int16_t,int16_t>>(fileName,channel,rate);
 
+        string fileName2 = "sample_input/countdown40sec_44100_signed_16bit_stereo.raw";
+        int channe2 = 2;
+        int rate2 = 44100;
+        Audio<int16_t, pair<int16_t,int16_t>> audTest2 = Audio<int16_t, pair<int16_t,int16_t>>(fileName2,channe2,rate2);
+
+        pair<int,int> range = make_pair(200000,400000);
+        Audio<int16_t, pair<int16_t,int16_t>> rangeAddedResult = audTest.rangeAdd(audTest2,range);
+
+        string testFile = "test/testCases/RangeAddedS_44100_16_stereo.raw";
+        Audio<int16_t, pair<int16_t,int16_t>> expectedAudio = Audio<int16_t, pair<int16_t,int16_t>>(testFile,channel,rate);
+
+        REQUIRE((expectedAudio == rangeAddedResult) == true);
     }
 }
