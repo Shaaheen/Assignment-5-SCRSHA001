@@ -249,12 +249,23 @@ TEST_CASE("Compute RMS test"){
         int channe2 = 1;
         int rate2 = 44100;
         Audio<int8_t,int8_t> audTest = Audio<int8_t,int8_t>(fileName2,channe2,rate2);
+        float calculatedRMS = audTest.computeRMS();
 
-        float expectedRMS = 5.77679;
+        float expectedRMS = 5.77678585;
 
-        REQUIRE(expectedRMS == audTest.computeRMS());
+        REQUIRE(expectedRMS == calculatedRMS);
     }
     SECTION("Stereo test"){
+        string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
+        int channel = 2;
+        int rate = 44100;
+        Audio<int16_t, pair<int16_t,int16_t>> audTest = Audio<int16_t, pair<int16_t,int16_t>>(fileName,channel,rate);
 
+        pair<float,float> RMSresult = audTest.computeRMS();
+        float expectedRMSLeft = 1642.01855;
+        float expectedRMSRight = 1516.70569;
+
+        REQUIRE(RMSresult.first == expectedRMSLeft);
+        REQUIRE(RMSresult.second == expectedRMSRight);
     }
 }

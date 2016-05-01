@@ -426,6 +426,24 @@ namespace SCRSHA001{
 
             return finalRangeAdded;
         }
+
+        /*
+         * Compute RMS for each channel - average volume of the sound clip
+         */
+        std::pair<float,float> computeRMS(){
+            //Using all floats so as not incur loss of accuracy
+            std::pair<float,float> init = {0.0,0.0};
+            std::pair<float,float> accumSum = std::accumulate(audioData.begin(), audioData.end(), init,
+                                             [](std::pair<float,float> sumOf,std::pair<BitType,BitType> audioElement){
+                                                 sumOf.first = sumOf.first + pow(audioElement.first,2);
+                                                 sumOf.second = sumOf.second + pow(audioElement.second,2);
+                                                 return sumOf; //Increment sum by square of audioElement
+                                             }
+            );
+            accumSum.first = (float) sqrt(accumSum.first / ((float) numberOfSamples) );
+            accumSum.second = (float) sqrt(accumSum.second / ((float) numberOfSamples) );
+            return accumSum;
+        }
     };
 }
 
