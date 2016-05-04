@@ -12,11 +12,11 @@
 #include <sstream>
 
 namespace SCRSHA001{
-    //Generic params BitType : int8_t or int16_t ChannelType: intN_t or pair<intN_t,intN_t>
-    template <typename BitType,typename ChannelType>
+    //Generic params BitType : int8_t or int16_t BitType: intN_t or pair<intN_t,intN_t>
+    template <typename BitType>
     class Audio{
     private:
-        std::vector<ChannelType> audioData;
+        std::vector<BitType> audioData;
         int channels;
         int sampleRateInHz;
         int numberOfSamples;
@@ -45,7 +45,7 @@ namespace SCRSHA001{
                         BitType sampleR;
                         input.read((char *) buffer2, sizeof(BitType)); //read in sample right ear
 
-                        //audioData[i] = (ChannelType) (std::make_pair(buffer , buffer2)); // will be pair<intN_t,intN_t>(sample,sampleR)
+                        //audioData[i] = (BitType) (std::make_pair(buffer , buffer2)); // will be pair<intN_t,intN_t>(sample,sampleR)
                     }
                     else{
                         audioData[i] = (*(BitType*) buffer); //int(sample)
@@ -151,7 +151,7 @@ namespace SCRSHA001{
             //Create all new variables as will be a diff number of samples and length - Can't just copy as diff vals
             int numSamplesWithCutOuts = numberOfSamples - (rangeToBeCut.second - rangeToBeCut.first) - 1;
             int cutLength = (int) (numSamplesWithCutOuts / ((float) sampleRateInHz));
-            std::vector<ChannelType> cutAudioData;
+            std::vector<BitType> cutAudioData;
             for (int i = 0; i < audioData.size(); ++i) {
                 if ( i < rangeToBeCut.first || i>rangeToBeCut.second){
                     cutAudioData.push_back(audioData[i]); //don't know index so use push back
@@ -159,7 +159,7 @@ namespace SCRSHA001{
             }
 
             //Create cut out audio object
-            Audio<BitType,ChannelType> audioWithCutOut(numSamplesWithCutOuts,cutLength,cutAudioData,channels,sampleRateInHz);
+            Audio<BitType> audioWithCutOut(numSamplesWithCutOuts,cutLength,cutAudioData,channels,sampleRateInHz);
             return audioWithCutOut;
         }
 
@@ -215,7 +215,7 @@ namespace SCRSHA001{
         float computeRMS(){
             float init =0.0; //Using all floats so as not incur loss of accuracy
             float accumSum = std::accumulate(audioData.begin(), audioData.end(), init,
-                            [](float sumOf,const ChannelType& audioElement){
+                            [](float sumOf,const BitType& audioElement){
                                 return (sumOf + ( pow(audioElement,2) )); //Increment sum by square of audioElement
                             }
             );
@@ -226,7 +226,7 @@ namespace SCRSHA001{
     };
 
     template <typename BitType>
-    class Audio<BitType,std::pair<BitType,BitType>>{
+    class Audio<std::pair<BitType,BitType>>{
     private:
         std::vector<std::pair<BitType,BitType>> audioData;
         int channels;
@@ -377,7 +377,7 @@ namespace SCRSHA001{
             }
 
             //Create cut out audio object
-            Audio<BitType,std::pair<BitType,BitType>> audioWithCutOut(numSamplesWithCutOuts,cutLength,cutAudioData,channels,sampleRateInHz);
+            Audio<std::pair<BitType,BitType>> audioWithCutOut(numSamplesWithCutOuts,cutLength,cutAudioData,channels,sampleRateInHz);
             return audioWithCutOut;
         }
 
