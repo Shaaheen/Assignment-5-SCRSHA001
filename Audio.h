@@ -249,6 +249,31 @@ namespace SCRSHA001{
             }
         };
 
+        /*
+         * Extra credit
+         * Function to fade in to class audio smoothly
+         */
+        Audio fadeIn(float numSecondsForFade){
+            float rampLength = numSecondsForFade * sampleRateInHz;
+            float FadeInSampleNo = 0.0; // To know what current sample index on in transform method
+            std::transform(audioData.begin(),audioData.end(),audioData.begin(), //Changes values of audioData array
+                          [rampLength,&FadeInSampleNo](BitType inputAmp){
+                              BitType outputAmp = ( ( FadeInSampleNo/rampLength) *((float)inputAmp) ); //Apply fade
+                              if (FadeInSampleNo > 13217){
+                                  //std::cout<<outputAmp<<" "<<FadeInSampleNo<<std::endl;
+                              }
+                              if (FadeInSampleNo< rampLength){ // Only apply fade if in fade in region
+                                  FadeInSampleNo++;
+                              }
+                              else{
+                                  FadeInSampleNo = rampLength; //ensures doesn't apply fade  i.e 1/1 *inputAmp occurs
+                              }
+                              return outputAmp;
+                          }
+            );
+            return *this;
+        }
+
     };
 
     template <typename BitType>
@@ -501,9 +526,9 @@ namespace SCRSHA001{
             }
         };
 
+
+
     };
-
-
 
 }
 
