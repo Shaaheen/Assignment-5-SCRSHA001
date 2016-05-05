@@ -10,6 +10,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <cstdint>
 
 namespace SCRSHA001{
     //Generic params BitType : int8_t or int16_t BitType: intN_t or pair<intN_t,intN_t>
@@ -222,6 +223,31 @@ namespace SCRSHA001{
             accumSum = (float) sqrt(accumSum / ((float) numberOfSamples) );
             return accumSum;
         }
+
+        /*
+         * Function to normalize the volume of audio data
+         */
+        Audio &normalize(float desiredRMS){
+            float currentRMS = computeRMS();
+            std::transform(audioData.begin(),audioData.end(),audioData.begin(),Normalize(desiredRMS,currentRMS) );
+            return *this;
+        }
+
+        //Normalize functor for mono
+        class Normalize{
+        private:
+            float desired;
+            float current;
+        public:
+            Normalize(float d, float c): desired(d),current(c){ }
+            BitType operator()(BitType inputAmp){
+                BitType outputAmp = (BitType) (inputAmp * (desired/current));
+                if ( outputAmp > std::numeric_limits<BitType>::max()){ //Clamps to max of int8 or int16
+                    outputAmp = std::numeric_limits<BitType>::max();
+                }
+                return outputAmp;
+            }
+        };
 
     };
 
@@ -445,6 +471,10 @@ namespace SCRSHA001{
             return accumSum;
         }
     };
+
+
+
 }
+
 
 #endif //ASSIGNMENT_5_SCRSHA001_AUDIO_H
