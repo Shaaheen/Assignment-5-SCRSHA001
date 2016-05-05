@@ -10,8 +10,7 @@ using namespace std;
 using namespace SCRSHA001;
 
 TEST_CASE("Type tests"){
-    cout<< sizeof(pair<int16_t,int16_t>)<<endl;
-    cout<< sizeof(int16_t)<<endl;
+    cout<<"Loading tests..."<<endl;
 
 
     ofstream output("Test.raw",std::ios::binary | std::ios::out);
@@ -267,5 +266,16 @@ TEST_CASE("Compute RMS test"){
 
         REQUIRE(RMSresult.first == expectedRMSLeft);
         REQUIRE(RMSresult.second == expectedRMSRight);
+    }
+}
+TEST_CASE("Normailization test"){
+    SECTION("Mono test"){
+        string fileName2 = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
+        int channe2 = 1;
+        int rate2 = 44100;
+        Audio<int8_t> audTest = Audio<int8_t>(fileName2,channe2,rate2);
+        Audio<int8_t> normalized = audTest.normalize(10);
+        normalized.saveAudio("NormalisedTest");
+        //REQUIRE(expectedRMS == calculatedRMS);
     }
 }

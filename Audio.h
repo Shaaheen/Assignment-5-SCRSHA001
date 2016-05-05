@@ -470,6 +470,37 @@ namespace SCRSHA001{
             accumSum.second = (float) sqrt(accumSum.second / ((float) numberOfSamples) );
             return accumSum;
         }
+
+        /*
+         * Function to normalize the volume of audio data
+         */
+        Audio &normalize(std::pair<float, float> desiredRMS){
+            std::pair<float,float> currentRMS = computeRMS();
+            std::transform(audioData.begin(),audioData.end(),audioData.begin(),Normalize(desiredRMS,currentRMS) );
+            return *this;
+        }
+
+        //Normalize functor for stereo
+        class Normalize{
+        private:
+            std::pair<float,float> desired;
+            std::pair<float,float> current;
+        public:
+            Normalize(std::pair<float,float> d, std::pair<float,float> c): desired(d),current(c){ }
+            BitType operator()(BitType inputAmp){
+                BitType outputAmpL = (BitType) (inputAmp * (desired.first/current.first)); //normalized amp
+                BitType outputAmpR = (BitType) (inputAmp * (desired.second/current.second));
+
+                if ( outputAmpL > std::numeric_limits<BitType>::max()){ //Clamps to max of int8 or int16
+                    outputAmpL = std::numeric_limits<BitType>::max();
+                }
+                if ( outputAmpR > std::numeric_limits<BitType>::max()){ //Clamps to max of int8 or int16
+                    outputAmpR = std::numeric_limits<BitType>::max();
+                }
+                return {outputAmpL,outputAmpR}; //return pair ouput amps
+            }
+        };
+
     };
 
 
