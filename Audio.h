@@ -487,9 +487,9 @@ namespace SCRSHA001{
             std::pair<float,float> current;
         public:
             Normalize(std::pair<float,float> d, std::pair<float,float> c): desired(d),current(c){ }
-            BitType operator()(BitType inputAmp){
-                BitType outputAmpL = (BitType) (inputAmp * (desired.first/current.first)); //normalized amp
-                BitType outputAmpR = (BitType) (inputAmp * (desired.second/current.second));
+            std::pair<BitType,BitType> operator()(std::pair<BitType,BitType> inputAmp){
+                BitType outputAmpL = (BitType) (inputAmp.first * (desired.first/current.first)); //normalized amp
+                BitType outputAmpR = (BitType) (inputAmp.second * (desired.second/current.second));
 
                 if ( outputAmpL > std::numeric_limits<BitType>::max()){ //Clamps to max of int8 or int16
                     outputAmpL = std::numeric_limits<BitType>::max();
