@@ -9,13 +9,77 @@
 using namespace std;
 using namespace SCRSHA001;
 
-TEST_CASE("Type tests"){
-    cout<<"Loading tests..."<<endl;
 
+TEST_CASE("Special Member test"){
+    SECTION("Constructor"){
+        cout<<"Loading test..."<<endl;
 
-    ofstream output("Test.raw",std::ios::binary | std::ios::out);
-    if (output.is_open()){
-        //output.write(pair<int,int>(7,6), sizeof(pair<int,int>));
+        string fileName = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
+        int channel = 1;
+        int rate = 44100;
+        Audio<int8_t> originalAudioLoaded = Audio<int8_t>(fileName,channel,rate); //Load function called here
+
+        //Check if have properties as ones given
+        REQUIRE((originalAudioLoaded.getChannel() ==channel));
+        REQUIRE((originalAudioLoaded.getLengthInSecond() ==18));
+        REQUIRE((originalAudioLoaded.getNumberOfSamples() ==793800));
+        REQUIRE((originalAudioLoaded.getSampleRate() ==rate));
+
+    }
+    SECTION("Destructor"){
+        string fileName = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
+        int channel = 1;
+        int rate = 44100;
+
+        Audio<int8_t> *originalAudioLoaded = new Audio<int8_t>(fileName,channel,rate); //Load function called here
+        delete originalAudioLoaded; //call destructor
+
+        //Check if data cleared
+        REQUIRE((originalAudioLoaded->getChannel() ==0));
+        REQUIRE((originalAudioLoaded->getLengthInSecond() ==0));
+        REQUIRE((originalAudioLoaded->getNumberOfSamples() ==0));
+        REQUIRE((originalAudioLoaded->getSampleRate() ==0));
+        REQUIRE(originalAudioLoaded->checkIfAudioEmpty());
+    }
+    SECTION("Copy/Move Constructors"){
+        string fileName = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
+        int channel = 1;
+        int rate = 44100;
+        Audio<int8_t> originalAudioLoaded = Audio<int8_t>(fileName,channel,rate); //Load function called here
+
+        Audio<int8_t> copyOfAudio(originalAudioLoaded);
+        //"==" operator overloaded to compare audio classes
+        REQUIRE(originalAudioLoaded == copyOfAudio); // Check if audio's equal
+
+        Audio<int8_t> movedAudio(move(originalAudioLoaded));
+        REQUIRE(copyOfAudio == movedAudio); //Checks if moved audio equal to orig data(which stored in copy)
+
+        //Check if data cleared
+        REQUIRE((originalAudioLoaded.getChannel() ==0));
+        REQUIRE((originalAudioLoaded.getLengthInSecond() ==0));
+        REQUIRE((originalAudioLoaded.getNumberOfSamples() ==0));
+        REQUIRE((originalAudioLoaded.getSampleRate() ==0));
+        REQUIRE(originalAudioLoaded.checkIfAudioEmpty());
+    }
+    SECTION("Copy/Move Assignment operators"){
+        string fileName = "sample_input/beez18sec_44100_signed_8bit_mono.raw";
+        int channel = 1;
+        int rate = 44100;
+        Audio<int8_t> originalAudioLoaded = Audio<int8_t>(fileName,channel,rate); //Load function called here
+
+        Audio<int8_t> copyOfAudio = originalAudioLoaded;
+        //"==" operator overloaded to compare audio classes
+        REQUIRE(originalAudioLoaded == copyOfAudio); // Check if audio's equal
+
+        Audio<int8_t> movedAudio = move(originalAudioLoaded) ;
+        REQUIRE(copyOfAudio == movedAudio); //Checks if moved audio equal to orig data(which stored in copy)
+
+        //Check if data cleared
+        REQUIRE((originalAudioLoaded.getChannel() ==0));
+        REQUIRE((originalAudioLoaded.getLengthInSecond() ==0));
+        REQUIRE((originalAudioLoaded.getNumberOfSamples() ==0));
+        REQUIRE((originalAudioLoaded.getSampleRate() ==0));
+        REQUIRE(originalAudioLoaded.checkIfAudioEmpty());
     }
 }
 

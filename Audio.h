@@ -116,6 +116,13 @@ namespace SCRSHA001{
             rhs.audioData.clear();
         }
 
+        //For unit tests
+        int getChannel(){ return channels;};
+        int getSampleRate(){ return sampleRateInHz;};
+        int getNumberOfSamples(){ return numberOfSamples;};
+        int getLengthInSecond(){ return lengthOfAudioSeconds;};
+        bool checkIfAudioEmpty(){ return audioData.empty();}
+
 
         /*
          * Saves the audio data into file
