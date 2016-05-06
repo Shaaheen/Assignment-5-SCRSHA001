@@ -77,6 +77,19 @@ namespace SCRSHA001{
         Audio(const Audio &rhs): channels(rhs.channels),sampleRateInHz(rhs.sampleRateInHz)
                 ,numberOfSamples(rhs.numberOfSamples),lengthOfAudioSeconds(rhs.lengthOfAudioSeconds),audioData(rhs.audioData){ }
 
+        //Move constructor
+        Audio(Audio &&rhs): channels(rhs.channels),sampleRateInHz(rhs.sampleRateInHz)
+        ,numberOfSamples(rhs.numberOfSamples),lengthOfAudioSeconds(rhs.lengthOfAudioSeconds),audioData(rhs.audioData){
+            rhs.channels =0; rhs.sampleRateInHz = 0; rhs.numberOfSamples = 0; rhs.lengthOfAudioSeconds =0;
+            rhs.audioData.clear();
+        }
+
+        //Copy assignment operator
+        Audio &operator=(const Audio & rhs){
+
+        }
+
+
         /*
          * Saves the audio data into file
          */
@@ -353,6 +366,13 @@ namespace SCRSHA001{
         //Copy constructor
         Audio(const Audio &rhs): channels(rhs.channels),sampleRateInHz(rhs.sampleRateInHz)
                 ,numberOfSamples(rhs.numberOfSamples),lengthOfAudioSeconds(rhs.lengthOfAudioSeconds),audioData(rhs.audioData){ }
+
+        //Move constructor
+        Audio(Audio &&rhs): channels(rhs.channels),sampleRateInHz(rhs.sampleRateInHz)
+                ,numberOfSamples(rhs.numberOfSamples),lengthOfAudioSeconds(rhs.lengthOfAudioSeconds),audioData(rhs.audioData){
+            rhs.channels =0; rhs.sampleRateInHz = 0; rhs.numberOfSamples = 0; rhs.lengthOfAudioSeconds =0;
+            rhs.audioData.clear();
+        }
 
         /*
          * Saves the audio data into file
