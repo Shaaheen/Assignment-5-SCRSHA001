@@ -68,6 +68,14 @@ namespace SCRSHA001{
             loadAudio(fileName);
         }
 
+        //Destructor
+        ~Audio(){
+            //Clear rhs data
+            channels = 0; sampleRateInHz = 0; numberOfSamples =0; lengthOfAudioSeconds = 0;
+            audioData.clear();
+            std::vector<BitType>().swap(audioData); //Replaces vector with empty vector - Ensures does not keep space
+        }
+
         //constructor
         Audio(int samples,int length, std::vector<BitType> vec, int &chan, int &rate)
                 : channels(chan), sampleRateInHz(rate), numberOfSamples(samples),lengthOfAudioSeconds(length),audioData(vec){
@@ -86,7 +94,26 @@ namespace SCRSHA001{
 
         //Copy assignment operator
         Audio &operator=(const Audio & rhs){
+            //Copy data from rhs audio
+            channels = rhs.channels;
+            sampleRateInHz = rhs.sampleRateInHz;
+            numberOfSamples = rhs.numberOfSamples;
+            lengthOfAudioSeconds = rhs.lengthOfAudioSeconds;
+            audioData = rhs.audioData;
+        }
 
+        //Move assignment operator
+        Audio &operator=(Audio && rhs){
+            //Copy data from rhs audio
+            channels = rhs.channels;
+            sampleRateInHz = rhs.sampleRateInHz;
+            numberOfSamples = rhs.numberOfSamples;
+            lengthOfAudioSeconds = rhs.lengthOfAudioSeconds;
+            audioData = rhs.audioData;
+
+            //Clear rhs data
+            rhs.channels = 0; rhs.sampleRateInHz = 0; rhs.numberOfSamples =0; rhs.lengthOfAudioSeconds = 0;
+            rhs.audioData.clear();
         }
 
 
@@ -358,6 +385,14 @@ namespace SCRSHA001{
             loadAudio(fileName);
         }
 
+        //Destructor
+        ~Audio(){
+            //Clear rhs data
+            channels = 0; sampleRateInHz = 0; numberOfSamples =0; lengthOfAudioSeconds = 0;
+            audioData.clear();
+            std::vector<std::pair<BitType,BitType>>().swap(audioData); //Replaces vector with empty vector - Ensures does not keep space
+        }
+
         //constructor
         Audio(int samples,int length, std::vector<std::pair<BitType,BitType>> vec, int &chan, int &rate)
                 : channels(chan), sampleRateInHz(rate), numberOfSamples(samples),lengthOfAudioSeconds(length),audioData(vec){
@@ -371,6 +406,29 @@ namespace SCRSHA001{
         Audio(Audio &&rhs): channels(rhs.channels),sampleRateInHz(rhs.sampleRateInHz)
                 ,numberOfSamples(rhs.numberOfSamples),lengthOfAudioSeconds(rhs.lengthOfAudioSeconds),audioData(rhs.audioData){
             rhs.channels =0; rhs.sampleRateInHz = 0; rhs.numberOfSamples = 0; rhs.lengthOfAudioSeconds =0;
+            rhs.audioData.clear();
+        }
+
+        //Copy assignment operator
+        Audio &operator=(const Audio & rhs){
+            channels = rhs.channels;
+            sampleRateInHz = rhs.sampleRateInHz;
+            numberOfSamples = rhs.numberOfSamples;
+            lengthOfAudioSeconds = rhs.lengthOfAudioSeconds;
+            audioData = rhs.audioData;
+        }
+
+        //Move assignment operator
+        Audio &operator=(Audio && rhs){
+            //Copy data from rhs audio
+            channels = rhs.channels;
+            sampleRateInHz = rhs.sampleRateInHz;
+            numberOfSamples = rhs.numberOfSamples;
+            lengthOfAudioSeconds = rhs.lengthOfAudioSeconds;
+            audioData = rhs.audioData;
+
+            //Clear rhs data
+            rhs.channels = 0; rhs.sampleRateInHz = 0; rhs.numberOfSamples =0; rhs.lengthOfAudioSeconds = 0;
             rhs.audioData.clear();
         }
 
