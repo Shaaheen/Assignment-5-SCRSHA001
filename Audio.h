@@ -11,6 +11,7 @@
 #include <iostream>
 #include <sstream>
 #include <cstdint>
+#include <algorithm>
 
 namespace SCRSHA001{
     //Generic params BitType : int8_t or int16_t BitType: intN_t or pair<intN_t,intN_t>
