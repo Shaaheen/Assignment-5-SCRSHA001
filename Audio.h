@@ -259,9 +259,6 @@ namespace SCRSHA001{
             std::transform(audioData.begin(),audioData.end(),audioData.begin(), //Changes values of audioData array
                           [rampLength,&FadeInSampleNo](BitType inputAmp){
                               BitType outputAmp = ( ( FadeInSampleNo/rampLength) *((float)inputAmp) ); //Apply fade
-                              if (FadeInSampleNo > 13217){
-                                  //std::cout<<outputAmp<<" "<<FadeInSampleNo<<std::endl;
-                              }
                               if (FadeInSampleNo< rampLength){ // Only apply fade if in fade in region
                                   FadeInSampleNo++;
                               }
@@ -566,6 +563,31 @@ namespace SCRSHA001{
                                else{
                                    FadeInSampleNo = rampLength; //ensures doesn't apply fade  i.e 1/1 *inputAmp occurs
                                }
+                               std::pair<BitType,BitType> toReturn = std::make_pair(outputAmpL,outputAmpR);
+                               return toReturn;
+                           }
+            );
+            return *this;
+        }
+
+        /*
+         * Extra credit
+         * Function to fade out to class audio smoothly
+         */
+        Audio &fadeOut(float numSecondsForFade){
+            float rampLength = numSecondsForFade * sampleRateInHz;
+            float startSample = numberOfSamples - rampLength;
+            int i = 0;
+
+            float FadeInSampleNo = 0.0; // To know what current sample index on in transform method
+            std::transform(audioData.begin(),audioData.end(),audioData.begin(), //Changes values of audioData array
+                           [rampLength,&FadeInSampleNo,&i,&startSample](std::pair<BitType,BitType> inputAmp){
+                               BitType outputAmpL = ( (1.0 - ( FadeInSampleNo/rampLength) ) *((float)inputAmp.first) ); //Apply fade
+                               BitType outputAmpR = ( (1.0 - ( FadeInSampleNo/rampLength) ) *((float)inputAmp.second) ); //Apply fade
+                               if( i > startSample){ //apply fade only at end of sample
+                                   FadeInSampleNo++;
+                               }
+                               i++;
                                std::pair<BitType,BitType> toReturn = std::make_pair(outputAmpL,outputAmpR);
                                return toReturn;
                            }
