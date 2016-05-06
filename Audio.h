@@ -253,7 +253,7 @@ namespace SCRSHA001{
          * Extra credit
          * Function to fade in to class audio smoothly
          */
-        Audio fadeIn(float numSecondsForFade){
+        Audio &fadeIn(float numSecondsForFade){
             float rampLength = numSecondsForFade * sampleRateInHz;
             float FadeInSampleNo = 0.0; // To know what current sample index on in transform method
             std::transform(audioData.begin(),audioData.end(),audioData.begin(), //Changes values of audioData array
@@ -270,6 +270,29 @@ namespace SCRSHA001{
                               }
                               return outputAmp;
                           }
+            );
+            return *this;
+        }
+
+        /*
+         * Extra credit
+         * Function to fade out to class audio smoothly
+         */
+        Audio &fadeOut(float numSecondsForFade){
+            float rampLength = numSecondsForFade * sampleRateInHz;
+            float startSample = numberOfSamples - rampLength;
+            int i = 0;
+
+            float FadeInSampleNo = 0.0; // To know what current sample index on in transform method
+            std::transform(audioData.begin(),audioData.end(),audioData.begin(), //Changes values of audioData array
+                           [rampLength,&FadeInSampleNo,&i,&startSample](BitType inputAmp){
+                               BitType outputAmp = ( (1.0 - ( FadeInSampleNo/rampLength) ) *((float)inputAmp) ); //Apply fade
+                               if( i > startSample){ //apply fade only at end of sample
+                                   FadeInSampleNo++;
+                               }
+                               i++;
+                               return outputAmp;
+                           }
             );
             return *this;
         }
@@ -526,6 +549,29 @@ namespace SCRSHA001{
             }
         };
 
+        /*
+         * Extra credit
+         * Function to fade in to class audio smoothly
+         */
+        Audio &fadeIn(float numSecondsForFade){
+            float rampLength = numSecondsForFade * sampleRateInHz;
+            float FadeInSampleNo = 0.0; // To know what current sample index on in transform method
+            std::transform(audioData.begin(),audioData.end(),audioData.begin(), //Changes values of audioData array
+                           [rampLength,&FadeInSampleNo](std::pair<BitType,BitType> inputAmp){
+                               BitType outputAmpL = ( ( FadeInSampleNo/rampLength) *((float)inputAmp.first) ); //Apply fade
+                               BitType outputAmpR = ( ( FadeInSampleNo/rampLength) *((float)inputAmp.second) ); //Apply fade
+                               if (FadeInSampleNo< rampLength){ // Only apply fade if in fade in region
+                                   FadeInSampleNo++;
+                               }
+                               else{
+                                   FadeInSampleNo = rampLength; //ensures doesn't apply fade  i.e 1/1 *inputAmp occurs
+                               }
+                               std::pair<BitType,BitType> toReturn = std::make_pair(outputAmpL,outputAmpR);
+                               return toReturn;
+                           }
+            );
+            return *this;
+        }
 
 
     };
