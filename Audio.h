@@ -166,11 +166,11 @@ namespace SCRSHA001{
         /*
          * Increases audio by a volume factor
          */
-        Audio operator*(std::pair<float, float> volumeFactor) {
+        Audio operator*(float volumeFactor) {
             Audio concatenated(*this);
             //Lambda function to increase audio data
             std::transform(this->audioData.begin(),this->audioData.end(),concatenated.audioData.begin(),
-                [volumeFactor](BitType value){ return value*volumeFactor.first;}
+                [volumeFactor](BitType value){ return value*volumeFactor;}
             );
             //concatenated.audioData.insert(concatenated.audioData.end(),rhs.audioData.begin(),rhs.audioData.end());
             return concatenated;

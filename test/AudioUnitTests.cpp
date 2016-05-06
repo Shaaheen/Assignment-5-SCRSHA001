@@ -127,12 +127,13 @@ TEST_CASE("Concatanate test"){
         int rate2 = 44100;
         Audio<int8_t> audTest2 = Audio<int8_t>(fileName2,channe2,rate2);
 
-        Audio<int8_t> resultAuds = audTest | audTest2;
+        Audio<int8_t> resultAuds = audTest | audTest2; //concatanate here
 
+        //Get expected audio of a concatenated file from test case files
         string testFile = "test/testCases/ConcatenTest_44100_8_mono.raw";
         Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channe2,rate2);
 
-        REQUIRE(resultAuds == expectedAudio);
+        REQUIRE(resultAuds == expectedAudio); //compare expected concatenated audio with result
     }
     SECTION("Stereo test"){
         string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
@@ -150,7 +151,7 @@ TEST_CASE("Concatanate test"){
         string testFile = "test/testCases/ConcatenTestS_44100_16_stereo.raw";
         Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channe2,rate2);
 
-        REQUIRE((expectedAudio == resultAuds) == true);
+        REQUIRE(expectedAudio == resultAuds);
         cout<<"Concatanate test done"<<endl;
     }
 
@@ -162,15 +163,15 @@ TEST_CASE("Volume test"){
         int channel = 1;
         int rate = 44100;
         Audio<int8_t> audTest = Audio<int8_t>(fileName,channel,rate);
-        pair<float,float> volumes = make_pair(5.0,0.0);
-        //(audTest * volumes).saveAudio("VolumeTest");
+        float volumes = 5.0; //Up volume by 5 times
 
-        Audio<int8_t> resultAuds = audTest *volumes;
+        Audio<int8_t> resultAuds = audTest *volumes; //apply volume up
 
+        //Get expected higher volume
         string testFile = "test/testCases/VolumeTest_44100_8_mono.raw";
         Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channel,rate);
 
-        REQUIRE((resultAuds == expectedAudio) == true);
+        REQUIRE(resultAuds == expectedAudio);
     }
 
     SECTION("Stereo test"){
@@ -204,14 +205,13 @@ TEST_CASE("Addition test"){
         int rate2 = 44100;
         Audio<int8_t> audTest2 = Audio<int8_t>(fileName2,channe2,rate2);
 
-        //(audTest + audTest2).saveAudio("AdditionTest");
+        Audio<int8_t> resultAuds = audTest + audTest2; //Add audios
 
-        Audio<int8_t> resultAuds = audTest + audTest2;
-
+        //Get expected addition output
         string testFile = "test/testCases/AdditionTest_44100_8_mono.raw";
         Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channel,rate);
 
-        REQUIRE((resultAuds == expectedAudio) == true);
+        REQUIRE(resultAuds == expectedAudio);
     }
     SECTION("Stereo test"){
         string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
@@ -231,7 +231,7 @@ TEST_CASE("Addition test"){
         string testFile = "test/testCases/AdditionTestS_44100_16_stereo.raw";
         Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channe2,rate2);
 
-        REQUIRE((expectedAudio == resultAuds) == true);
+        REQUIRE(expectedAudio == resultAuds);
         cout<<"Addition test done"<<endl;
     }
 
@@ -243,15 +243,15 @@ TEST_CASE("Cut out test"){
         int channel = 1;
         int rate = 44100;
         Audio<int8_t> audTest = Audio<int8_t>(fileName,channel,rate);
-        pair<int,int> range = make_pair(0,200000);
-        //(audTest ^ range).saveAudio("CutOutTest");
+        pair<int,int> range = make_pair(0,200000); //Range to be cut is between 0 and 200 000
 
-        Audio<int8_t> resultAuds = audTest ^ range;
+        Audio<int8_t> resultAuds = audTest ^ range; //Cut out range
 
+        //Get expected cut audio
         string testFile = "test/testCases/CutOutTest_44100_8_mono.raw";
         Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channel,rate);
 
-        REQUIRE((resultAuds == expectedAudio) == true);
+        REQUIRE(resultAuds == expectedAudio);
     }
 
     SECTION("Stereo test"){
@@ -260,14 +260,13 @@ TEST_CASE("Cut out test"){
         int rate = 44100;
         Audio<pair<int16_t,int16_t>> audTest = Audio<pair<int16_t,int16_t>>(fileName,channel,rate);
         pair<int,int> range = make_pair(0,300000);
-        //(audTest ^ range).saveAudio("CutOutTestS");
 
         Audio<pair<int16_t,int16_t>> resultAuds = audTest ^ range;
 
         string testFile = "test/testCases/CutOutTestS_44100_16_stereo.raw";
         Audio< pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 
-        REQUIRE((expectedAudio == resultAuds) == true);
+        REQUIRE(expectedAudio == resultAuds);
         cout<<"Cut out test done"<<endl;
     }
 
@@ -279,16 +278,26 @@ TEST_CASE("Reverse test"){
         int channel = 1;
         int rate = 44100;
         Audio<int8_t> audTest = Audio<int8_t>(fileName,channel,rate);
-        (audTest.reverse());
+        (audTest.reverse()); //Reverse audio
 
+        //Get expected reversed audio
         string testFile = "test/testCases/Reversed_44100_8_mono.raw";
         Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channel,rate);
 
-        REQUIRE((expectedAudio == audTest) == true);
+        REQUIRE(expectedAudio == audTest);
 
     }
     SECTION("Stereo"){
-        //todo do this quick test case
+        string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
+        int channel = 2;
+        int rate = 44100;
+        Audio<pair<int16_t,int16_t>> audTest = Audio<pair<int16_t,int16_t>>(fileName,channel,rate);
+        (audTest.reverse());
+
+        string testFile = "test/testCases/ReversedS_44100_16_stereo.raw";
+        Audio< pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
+
+        REQUIRE(expectedAudio == audTest);
 
         cout<<"Reverse test done"<<endl;
     }
@@ -307,13 +316,14 @@ TEST_CASE("Range added test"){
         int rate2 = 44100;
         Audio<int8_t> audTest2 = Audio<int8_t>(fileName2,channe2,rate2);
 
-        pair<int,int> range = make_pair(200000,400000);
-        Audio<int8_t> rangeAddedResult = audTest.rangeAdd(audTest2,range);
+        pair<int,int> range = make_pair(200000,400000); //Range to add two audios together
+        Audio<int8_t> rangeAddedResult = audTest.rangeAdd(audTest2,range); //add ranges
 
+        //Get expected range added output
         string testFile = "test/testCases/RangeAdded_44100_8_mono.raw";
         Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channel,rate);
 
-        REQUIRE((expectedAudio == rangeAddedResult) == true);
+        REQUIRE(expectedAudio == rangeAddedResult);
     }
     SECTION("Stereo test"){
         string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
@@ -332,7 +342,7 @@ TEST_CASE("Range added test"){
         string testFile = "test/testCases/RangeAddedS_44100_16_stereo.raw";
         Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 
-        REQUIRE((expectedAudio == rangeAddedResult) == true);
+        REQUIRE(expectedAudio == rangeAddedResult);
         cout<<"Range added test done"<<endl;
     }
 
@@ -375,12 +385,13 @@ TEST_CASE("Normalization test"){
         int rate2 = 44100;
         Audio<int8_t> audTest = Audio<int8_t>(fileName2,channe2,rate2);
 
-        Audio<int8_t> normalizedResult = audTest.normalize(10);
+        Audio<int8_t> normalizedResult = audTest.normalize(10); //Normalize around 10
 
+        //Get expected normalized audio
         string testFile = "test/testCases/NormalisedTest_44100_8_mono.raw";
         Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channe2,rate2);
 
-        REQUIRE((expectedAudio == normalizedResult) == true);
+        REQUIRE(expectedAudio == normalizedResult);
     }
     SECTION("Stereo test"){
         string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
@@ -393,7 +404,7 @@ TEST_CASE("Normalization test"){
         string testFile = "test/testCases/NormalisedTestS_44100_16_stereo.raw";
         Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 
-        REQUIRE((expectedAudio == normalizedResult) == true);
+        REQUIRE(expectedAudio == normalizedResult);
 
         cout<<"Normalization test done"<<endl;
     }
@@ -407,25 +418,25 @@ TEST_CASE("Fading test - EXTRA CREDIT"){
             int channe2 = 1;
             int rate2 = 44100;
             Audio<int8_t> audTest = Audio<int8_t>(fileName2,channe2,rate2);
-            Audio<int8_t> fadeInResult = audTest.fadeIn(10.0);
+            Audio<int8_t> fadeInResult = audTest.fadeIn(10.0); //Fade in for first 10 seconds
 
+            //Get expected fade in input
             string testFile = "test/testCases/FadeInTest_44100_8_mono.raw";
             Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channe2,rate2);
 
-            REQUIRE((expectedAudio == fadeInResult) == true);
+            REQUIRE(expectedAudio == fadeInResult);
         }
         SECTION("Stereo"){
             string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
             int channel = 2;
             int rate = 44100;
             Audio<pair<int16_t,int16_t>> audTest = Audio<pair<int16_t,int16_t>>(fileName,channel,rate);
-            Audio<pair<int16_t,int16_t>> fadeInResult = audTest.fadeIn(5.0);
-
+            Audio<pair<int16_t,int16_t>> fadeInResult = audTest.fadeIn(5.0); //Fade in till 5 second mark
 
             string testFile = "test/testCases/FadeInTestS_44100_16_stereo.raw";
             Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 
-            REQUIRE((expectedAudio == fadeInResult) == true);
+            REQUIRE(expectedAudio == fadeInResult);
 
             cout<<"Fade In test done"<<endl;
         }
@@ -437,24 +448,24 @@ TEST_CASE("Fading test - EXTRA CREDIT"){
             int channe2 = 1;
             int rate2 = 44100;
             Audio<int8_t> audTest = Audio<int8_t>(fileName2,channe2,rate2);
-            Audio<int8_t> fadeOutResult = audTest.fadeOut(10.0);
+            Audio<int8_t> fadeOutResult = audTest.fadeOut(10.0); //fade out from last 10 seconds
 
             string testFile = "test/testCases/FadeOutTest_44100_8_mono.raw";
             Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channe2,rate2);
 
-            REQUIRE((expectedAudio == fadeOutResult) == true);
+            REQUIRE(expectedAudio == fadeOutResult);
         }
         SECTION("Stereo"){
             string fileName = "sample_input/beez18sec_44100_signed_16bit_stereo.raw";
             int channel = 2;
             int rate = 44100;
             Audio<pair<int16_t,int16_t>> audTest = Audio<pair<int16_t,int16_t>>(fileName,channel,rate);
-            Audio<pair<int16_t,int16_t>> fadeOutResult = audTest.fadeOut(5.0);
+            Audio<pair<int16_t,int16_t>> fadeOutResult = audTest.fadeOut(5.0); //fade out from last 5 seconds
 
             string testFile = "test/testCases/FadeOutTestS_44100_16_stereo.raw";
             Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 
-            REQUIRE((expectedAudio == fadeOutResult) == true);
+            REQUIRE(expectedAudio == fadeOutResult);
 
             cout<<"Fade Out test done"<<endl;
         }
