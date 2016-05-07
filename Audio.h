@@ -69,6 +69,8 @@ namespace SCRSHA001{
             loadAudio(fileName);
         }
 
+        Audio() = default;
+
         //Destructor
         ~Audio(){
             //Clear rhs data
