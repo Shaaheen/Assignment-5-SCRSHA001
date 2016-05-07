@@ -9,11 +9,8 @@ EXE_NAME=unitTests
 #define a generic rule: to go from .cpp to .o files make should invoke the c++ compiler
 #the syntax tells make to invoke the compiler without linking (-c), outputting a .o file reading a .cpp file, additionally specifying flags
 
-$(EXE_NAME): AudioUnitTests.o Audio.o
-	$(CPP) -o $(EXE_NAME) AudioUnitTests.o Audio.o $(CPPFLAGS) 
-
-Audio.o : ../Audio.h 
-	$(CPP) -c -o Audio.o $(CPPFLAGS)
+$(EXE_NAME): AudioUnitTests.o
+	$(CPP) -o $(EXE_NAME) AudioUnitTests.o $(CPPFLAGS) 
 
 AudioUnitTests.o : ../Audio.h AudioUnitTests.cpp
 	$(CPP) -c -o AudioUnitTests.o AudioUnitTests.cpp $(CPPFLAGS)

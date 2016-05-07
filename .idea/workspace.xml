@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
+    <generated>
+      <config projectName="Assignment_5_SCRSHA001" targetName="Assignment_5_SCRSHA001" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="false" GENERATION_PASS_SYSTEM_ENVIRONMENT="true">
+    <ADDITIONAL_GENERATION_ENVIRONMENT>
+      <envs />
+    </ADDITIONAL_GENERATION_ENVIRONMENT>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="83ef803f-c5f8-42cc-8c04-1a6e65dc0bd3" name="Default" comment="" />
+    <ignored path="Assignment-5-SCRSHA001.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="Assignment-5-SCRSHA001" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Audio.h" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Audio.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.33795494">
+              <caret line="282" column="25" selection-start-line="282" selection-start-column="25" selection-end-line="282" selection-end-column="25" />
+              <folding>
+                <element signature="e#123#140#0" expanded="true" />
+                <element signature="e#380#398#0" expanded="true" />
+                <element signature="e#591#2153#0" expanded="false" />
+                <element signature="e#4791#5504#0" expanded="false" />
+                <element signature="e#5514#5752#0" expanded="false" />
+                <element signature="e#6969#7620#0" expanded="false" />
+                <element signature="e#7630#8567#0" expanded="false" />
+                <element signature="e#10034#10473#0" expanded="false" />
+                <element signature="e#10688#11322#0" expanded="false" />
+                <element signature="e#11691#12237#1" expanded="false" />
+                <element signature="e#12248#13362#0" expanded="false" />
+                <element signature="e#13372#14440#0" expanded="false" />
+                <element signature="e#14463#14481#0" expanded="true" />
+                <element signature="e#14721#16042#0" expanded="false" />
+                <element signature="e#16064#16231#0" expanded="false" />
+                <element signature="e#18348#19174#0" expanded="false" />
+                <element signature="e#19184#19422#0" expanded="false" />
+                <element signature="e#19432#20129#0" expanded="false" />
+                <element signature="e#20793#21974#0" expanded="false" />
+                <element signature="e#22968#23163#0" expanded="false" />
+                <element signature="e#23173#23612#0" expanded="false" />
+                <element signature="e#23622#25069#0" expanded="false" />
+                <element signature="e#25079#26148#0" expanded="false" />
+                <element signature="e#27588#28970#0" expanded="false" />
+                <element signature="e#28980#30315#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AudioUnitTests.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/AudioUnitTests.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="212" column="2" selection-start-line="212" selection-start-column="2" selection-end-line="212" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="386" column="50" selection-start-line="386" selection-start-column="50" selection-end-line="386" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/AudioUnitTests.cpp" />
+        <option value="$PROJECT_DIR$/Audio.cpp" />
+        <option value="$PROJECT_DIR$/StereoAudio.h" />
+        <option value="$PROJECT_DIR$/SterAudio.h" />
+        <option value="$PROJECT_DIR$/Audio.h" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/test/AudioUnitTests.cpp" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment-5-SCRSHA001" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment-5-SCRSHA001" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment-5-SCRSHA001" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment-5-SCRSHA001" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment-5-SCRSHA001" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files (x86)\nodejs\node.exe" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Shaaheen\Google Drive\IdeaProjects\Practicals- CSC3022H\Assignment-5-SCRSHA001\test\testCases" />
+      <recent name="C:\Users\Shaaheen\Google Drive\IdeaProjects\Practicals- CSC3022H\Assignment-5-SCRSHA001\test" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Build All">
+    <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS="FALSE" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Assignment_5_SCRSHA001" TARGET_NAME="Assignment_5_SCRSHA001" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Assignment_5_SCRSHA001" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Assignment_5_SCRSHA001" TARGET_NAME="Assignment_5_SCRSHA001" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Assignment_5_SCRSHA001" RUN_TARGET_NAME="Assignment_5_SCRSHA001">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="samp -r 44100 -b 8bit -c 1  -cat sample_input/countdown40sec_44100_signed_8bit_mono.raw sample_input/siren40sec_44100_signed_8bit_mono.raw" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Assignment_5_SCRSHA001" TARGET_NAME="Assignment_5_SCRSHA001" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Assignment_5_SCRSHA001" RUN_TARGET_NAME="Assignment_5_SCRSHA001">
+      <envs />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.Assignment_5_SCRSHA001" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Build All" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="83ef803f-c5f8-42cc-8c04-1a6e65dc0bd3" name="Default" comment="" />
+      <created>1461926728135</created>
+      <option name="number" value="Default" />
+      <updated>1461926728135</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit - Created empty classes">
+      <created>1461926877838</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1461926877838</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Implemented load and save functions">
+      <created>1461971105348</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1461971105348</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Templated Audio class with general case mono channel">
+      <created>1461973869266</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1461973869266</updated>
+    </task>
+    <task id="LOCAL-00004" summary="initialised special template class for stereo channel">
+      <created>1461974200951</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1461974200951</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Created concatenate operator">
+      <created>1462008021442</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1462008021442</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added unit tests">
+      <created>1462008040719</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1462008040719</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Created volume increase function&#10;-Increases audio by a volume factor">
+      <created>1462011174806</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1462011174806</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Created adding function&#10;-adds aplitude of two audios">
+      <created>1462011240107</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1462011240107</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added the cutout function to take a range of samples out of a file">
+      <created>1462051193729</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1462051193729</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Implemented cutout unit tests">
+      <created>1462051591941</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1462051591941</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added an &quot;==&quot; operator for the unt test class to use">
+      <created>1462052253080</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1462052253080</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Cleaned up unit tests - Compares to premade correct file for each test">
+      <created>1462053867723</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1462053867723</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added a reverse funrction">
+      <created>1462054566292</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1462054566292</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Created a unit test for the reserve function">
+      <created>1462055091951</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1462055091951</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Implemented the rangeAdd function&#10;-selects two (same length) sample ranges from two signals&#10;and add them together.">
+      <created>1462057995947</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1462057995947</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added unit test for rangeAdd function - mono">
+      <created>1462058329820</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1462058329820</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added unit test for rangeAdd function - stereo">
+      <created>1462086762400</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1462086762420</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Compute RMS function and unit test for mono audio done&#10;-used std::accumulate in &lt;numeric&gt; along with a custom&#10;lambda to compute the RMS (per channel),&#10;-“average” volume of the sound clip.">
+      <created>1462091666710</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1462091666710</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Compute RMS done for stereo channel&#10;-Used pair&lt;float,float&gt;">
+      <created>1462093132509</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1462093132509</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Changed template params">
+      <created>1462376293335</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1462376293335</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Implemented a Sound normalization function&#10;-  Uses std::transform with a custom functor to&#10;  normalize the sound files to the specified desired rms value (per channel).&#10; -To normalize:&#10;  outputAmp=inputAmp× ( RMSdesired \ RMScurrent )">
+      <created>1462483983939</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1462483983939</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Created stereo normalization">
+      <created>1462484374980</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1462484374980</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fixed bug where returning wrong value &#10;-should have returned pair&lt;int,int&gt; not just int">
+      <created>1462486070811</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1462486070811</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Added unit tests for normalisation methods">
+      <created>1462486369083</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1462486369083</updated>
+    </task>
+    <task id="LOCAL-00025" summary="EXTRA CREDIT:&#10;-Fade in method implemented for mono audio">
+      <created>1462490206016</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1462490206016</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Added stereo fade in method&#10;-Fixed bug where would not return a { pair,pair} &#10;- had to use make_pair&lt;&gt;()">
+      <created>1462560203471</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1462560203471</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Second part of Extra Credit - Fade Out method&#10;-Created fade out method for both mono and stereo">
+      <created>1462561765216</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1462561765216</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Added unit tests for fading methods">
+      <created>1462563271705</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1462563271705</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added more special member functions to audio class">
+      <created>1462564068952</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1462564068952</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Unit tests for special member functions">
+      <created>1462566655951</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1462566655951</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fixed bug in reverse test and added more comments">
+      <created>1462568151450</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1462568151450</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Initilaised main driver class">
+      <created>1462572626851</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1462572626851</updated>
+    </task>
+    <task id="LOCAL-00033" summary="added more driver operations to instantiate functions in Audio">
+      <created>1462606713794</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1462606713794</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Forget to add in the main function :(">
+      <created>1462607636782</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1462607636782</updated>
+    </task>
+    <task id="LOCAL-00035" summary="added expected output files that were used for unit tests">
+      <created>1462610073693</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1462610073693</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Created makefiles and main Readme">
+      <created>1462610304983</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1462610304983</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18081991" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3753943" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3895899" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4873817" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Cleaned up unit tests - Compares to premade correct file for each test" />
+    <MESSAGE value="Added a reverse funrction" />
+    <MESSAGE value="Created a unit test for the reserve function" />
+    <MESSAGE value="Implemented the rangeAdd function&#10;-selects two (same length) sample ranges from two signals&#10;and add them together." />
+    <MESSAGE value="Added unit test for rangeAdd function - mono" />
+    <MESSAGE value="Added unit test for rangeAdd function - stereo" />
+    <MESSAGE value="Compute RMS function and unit test for mono audio done&#10;-used std::accumulate in &lt;numeric&gt; along with a custom&#10;lambda to compute the RMS (per channel),&#10;-“average” volume of the sound clip." />
+    <MESSAGE value="Compute RMS done for stereo channel&#10;-Used pair&lt;float,float&gt;" />
+    <MESSAGE value="Changed template params" />
+    <MESSAGE value="Implemented a Sound normalization function&#10;-  Uses std::transform with a custom functor to&#10;  normalize the sound files to the specified desired rms value (per channel).&#10; -To normalize:&#10;  outputAmp=inputAmp× ( RMSdesired \ RMScurrent )" />
+    <MESSAGE value="Created stereo normalization" />
+    <MESSAGE value="Fixed bug where returning wrong value &#10;-should have returned pair&lt;int,int&gt; not just int" />
+    <MESSAGE value="Added unit tests for normalisation methods" />
+    <MESSAGE value="EXTRA CREDIT:&#10;-Fade in method implemented for mono audio" />
+    <MESSAGE value="Added stereo fade in method&#10;-Fixed bug where would not return a { pair,pair} &#10;- had to use make_pair&lt;&gt;()" />
+    <MESSAGE value="Second part of Extra Credit - Fade Out method&#10;-Created fade out method for both mono and stereo" />
+    <MESSAGE value="Added unit tests for fading methods" />
+    <MESSAGE value="Added more special member functions to audio class" />
+    <MESSAGE value="Unit tests for special member functions" />
+    <MESSAGE value="Fixed bug in reverse test and added more comments" />
+    <MESSAGE value="Initilaised main driver class" />
+    <MESSAGE value="added more driver operations to instantiate functions in Audio" />
+    <MESSAGE value="Forget to add in the main function :(" />
+    <MESSAGE value="added expected output files that were used for unit tests" />
+    <MESSAGE value="Created makefiles and main Readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created makefiles and main Readme" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="57" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Audio.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="443" column="89" selection-start-line="443" selection-start-column="89" selection-end-line="443" selection-end-column="89" />
+          <folding>
+            <element signature="e#123#140#0" expanded="true" />
+            <element signature="e#380#398#0" expanded="true" />
+            <element signature="e#591#2153#0" expanded="false" />
+            <element signature="e#4791#5504#0" expanded="false" />
+            <element signature="e#5514#5752#0" expanded="false" />
+            <element signature="e#6969#7620#0" expanded="false" />
+            <element signature="e#7630#8567#0" expanded="false" />
+            <element signature="e#10034#10473#0" expanded="false" />
+            <element signature="e#10688#11322#0" expanded="false" />
+            <element signature="e#11691#12237#1" expanded="false" />
+            <element signature="e#12248#13362#0" expanded="false" />
+            <element signature="e#13372#14440#0" expanded="false" />
+            <element signature="e#14463#14481#0" expanded="true" />
+            <element signature="e#14721#16042#0" expanded="false" />
+            <element signature="e#16064#16231#0" expanded="false" />
+            <element signature="e#18348#19174#0" expanded="false" />
+            <element signature="e#19184#19422#0" expanded="false" />
+            <element signature="e#19432#20129#0" expanded="false" />
+            <element signature="e#20793#21974#0" expanded="false" />
+            <element signature="e#22968#23163#0" expanded="false" />
+            <element signature="e#23173#23612#0" expanded="false" />
+            <element signature="e#23622#25069#0" expanded="false" />
+            <element signature="e#25079#26148#0" expanded="false" />
+            <element signature="e#27588#28970#0" expanded="false" />
+            <element signature="e#28980#30315#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/AudioUnitTests.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++/bits/stl_pair.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33035713">
+          <caret line="275" column="0" selection-start-line="275" selection-start-column="0" selection-end-line="275" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/ConcatenTestS_44100_16_stereo.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.598916">
+          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/ConcatenTest_44100_8_mono.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/VolumeTest_44100_8_mono.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/VolumeTestS_44100_16_stereo.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/AdditionTest_44100_8_mono.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/AdditionTestS_44100_16_stereo.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/CutOutTest_44100_8_mono.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/CutOutTestS_44100_16_stereo.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/Reversed_44100_8_mono.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/RangeAdded_44100_8_mono.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/RangeAddedS_44100_16_stereo.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++/bits/stl_numeric.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/NormalisedTest_44100_8_mono.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catch.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/expectedOutputForTests/NormalisedTestS_44100_16_stereo.raw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/4.9.3/include/c++/bits/stl_algo.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4163" column="0" selection-start-line="4163" selection-start-column="0" selection-end-line="4163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Assignment-4-SCRSHA001/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="12" selection-start-line="60" selection-start-column="12" selection-end-line="62" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#19#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2367688">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="386" column="50" selection-start-line="386" selection-start-column="50" selection-end-line="386" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/AudioUnitTests.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="212" column="2" selection-start-line="212" selection-start-column="2" selection-end-line="212" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Audio.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33795494">
+          <caret line="282" column="25" selection-start-line="282" selection-start-column="25" selection-end-line="282" selection-end-column="25" />
+          <folding>
+            <element signature="e#123#140#0" expanded="true" />
+            <element signature="e#380#398#0" expanded="true" />
+            <element signature="e#591#2153#0" expanded="false" />
+            <element signature="e#4791#5504#0" expanded="false" />
+            <element signature="e#5514#5752#0" expanded="false" />
+            <element signature="e#6969#7620#0" expanded="false" />
+            <element signature="e#7630#8567#0" expanded="false" />
+            <element signature="e#10034#10473#0" expanded="false" />
+            <element signature="e#10688#11322#0" expanded="false" />
+            <element signature="e#11691#12237#1" expanded="false" />
+            <element signature="e#12248#13362#0" expanded="false" />
+            <element signature="e#13372#14440#0" expanded="false" />
+            <element signature="e#14463#14481#0" expanded="true" />
+            <element signature="e#14721#16042#0" expanded="false" />
+            <element signature="e#16064#16231#0" expanded="false" />
+            <element signature="e#18348#19174#0" expanded="false" />
+            <element signature="e#19184#19422#0" expanded="false" />
+            <element signature="e#19432#20129#0" expanded="false" />
+            <element signature="e#20793#21974#0" expanded="false" />
+            <element signature="e#22968#23163#0" expanded="false" />
+            <element signature="e#23173#23612#0" expanded="false" />
+            <element signature="e#23622#25069#0" expanded="false" />
+            <element signature="e#25079#26148#0" expanded="false" />
+            <element signature="e#27588#28970#0" expanded="false" />
+            <element signature="e#28980#30315#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

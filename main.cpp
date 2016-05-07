@@ -15,17 +15,17 @@ int main(int argc,char* argv[]) {
     }
     else {
         cout << "| Audio manipulation program |" << endl;
-        int sampleRate = getIntFromArgs(argv[3]);
+        int sampleRate = getIntFromArgs(argv[2]);
         cout<<"|Sample Rate: "<<sampleRate<<" |";
-        bool bit8 = (string(argv[5]) == "8bit"); //True if 8bit, False if not
-        cout<<"Bits: "<<argv[5]<<" |";
-        int channel = getIntFromArgs(argv[7]);
+        bool bit8 = (string(argv[4]) == "8bit"); //True if 8bit, False if not
+        cout<<"Bits: "<<argv[4]<<" |";
+        int channel = getIntFromArgs(argv[6]);
         cout<<"Channel: "<<channel<<" |";
         string outFileName = "out"; //default out file name
-        int indexAtArgs = 8; //ops index here if no outfile chosen
-        if (string(argv[8]) == "-o") {
-            outFileName = argv[9];
-            indexAtArgs = 10; //Move index forward to choose ops
+        int indexAtArgs = 7; //ops index here if no outfile chosen
+        if (string(argv[7]) == "-o") {
+            outFileName = argv[8];
+            indexAtArgs = 9; //Move index forward to choose ops
         }
         cout<<"Output Filename: "<<outFileName<<endl;
         string opChosen = argv[indexAtArgs];
