@@ -130,7 +130,7 @@
 //        Audio<int8_t> resultAuds = audTest | audTest2; //concatanate here
 //
 //        //Get expected audio of a concatenated file from test case files
-//        string testFile = "test/testCases/ConcatenTest_44100_8_mono.raw";
+//        string testFile = "test/expectedOutputForTests/ConcatenTest_44100_8_mono.raw";
 //        Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channe2,rate2);
 //
 //        REQUIRE(resultAuds == expectedAudio); //compare expected concatenated audio with result
@@ -148,7 +148,7 @@
 //
 //        Audio<pair<int16_t,int16_t>> resultAuds = audTest | audTest2;
 //
-//        string testFile = "test/testCases/ConcatenTestS_44100_16_stereo.raw";
+//        string testFile = "test/expectedOutputForTests/ConcatenTestS_44100_16_stereo.raw";
 //        Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channe2,rate2);
 //
 //        REQUIRE(expectedAudio == resultAuds);
@@ -168,7 +168,7 @@
 //        Audio<int8_t> resultAuds = audTest *volumes; //apply volume up
 //
 //        //Get expected higher volume
-//        string testFile = "test/testCases/VolumeTest_44100_8_mono.raw";
+//        string testFile = "test/expectedOutputForTests/VolumeTest_44100_8_mono.raw";
 //        Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channel,rate);
 //
 //        REQUIRE(resultAuds == expectedAudio);
@@ -184,7 +184,7 @@
 //
 //        Audio<pair<int16_t,int16_t>> resultAuds = audTest *volumes;
 //
-//        string testFile = "test/testCases/VolumeTestS_44100_16_stereo.raw";
+//        string testFile = "test/expectedOutputForTests/VolumeTestS_44100_16_stereo.raw";
 //        Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 //
 //        REQUIRE((expectedAudio == resultAuds) == true);
@@ -208,7 +208,7 @@
 //        Audio<int8_t> resultAuds = audTest + audTest2; //Add audios
 //
 //        //Get expected addition output
-//        string testFile = "test/testCases/AdditionTest_44100_8_mono.raw";
+//        string testFile = "test/expectedOutputForTests/AdditionTest_44100_8_mono.raw";
 //        Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channel,rate);
 //
 //        REQUIRE(resultAuds == expectedAudio);
@@ -228,7 +228,7 @@
 //
 //        Audio<pair<int16_t,int16_t>> resultAuds = audTest + audTest2;
 //
-//        string testFile = "test/testCases/AdditionTestS_44100_16_stereo.raw";
+//        string testFile = "test/expectedOutputForTests/AdditionTestS_44100_16_stereo.raw";
 //        Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channe2,rate2);
 //
 //        REQUIRE(expectedAudio == resultAuds);
@@ -248,7 +248,7 @@
 //        Audio<int8_t> resultAuds = audTest ^ range; //Cut out range
 //
 //        //Get expected cut audio
-//        string testFile = "test/testCases/CutOutTest_44100_8_mono.raw";
+//        string testFile = "test/expectedOutputForTests/CutOutTest_44100_8_mono.raw";
 //        Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channel,rate);
 //
 //        REQUIRE(resultAuds == expectedAudio);
@@ -263,7 +263,7 @@
 //
 //        Audio<pair<int16_t,int16_t>> resultAuds = audTest ^ range;
 //
-//        string testFile = "test/testCases/CutOutTestS_44100_16_stereo.raw";
+//        string testFile = "test/expectedOutputForTests/CutOutTestS_44100_16_stereo.raw";
 //        Audio< pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 //
 //        REQUIRE(expectedAudio == resultAuds);
@@ -281,7 +281,7 @@
 //        (audTest.reverse()); //Reverse audio
 //
 //        //Get expected reversed audio
-//        string testFile = "test/testCases/Reversed_44100_8_mono.raw";
+//        string testFile = "test/expectedOutputForTests/Reversed_44100_8_mono.raw";
 //        Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channel,rate);
 //
 //        REQUIRE(expectedAudio == audTest);
@@ -294,7 +294,7 @@
 //        Audio<pair<int16_t,int16_t>> audTest = Audio<pair<int16_t,int16_t>>(fileName,channel,rate);
 //        (audTest.reverse());
 //
-//        string testFile = "test/testCases/ReversedS_44100_16_stereo.raw";
+//        string testFile = "test/expectedOutputForTests/ReversedS_44100_16_stereo.raw";
 //        Audio< pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 //
 //        REQUIRE(expectedAudio == audTest);
@@ -320,7 +320,7 @@
 //        Audio<int8_t> rangeAddedResult = audTest.rangeAdd(audTest2,range); //add ranges
 //
 //        //Get expected range added output
-//        string testFile = "test/testCases/RangeAdded_44100_8_mono.raw";
+//        string testFile = "test/expectedOutputForTests/RangeAdded_44100_8_mono.raw";
 //        Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channel,rate);
 //
 //        REQUIRE(expectedAudio == rangeAddedResult);
@@ -339,7 +339,7 @@
 //        pair<int,int> range = make_pair(200000,400000);
 //        Audio<pair<int16_t,int16_t>> rangeAddedResult = audTest.rangeAdd(audTest2,range);
 //
-//        string testFile = "test/testCases/RangeAddedS_44100_16_stereo.raw";
+//        string testFile = "test/expectedOutputForTests/RangeAddedS_44100_16_stereo.raw";
 //        Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 //
 //        REQUIRE(expectedAudio == rangeAddedResult);
@@ -388,7 +388,7 @@
 //        Audio<int8_t> normalizedResult = audTest.normalize(10); //Normalize around 10
 //
 //        //Get expected normalized audio
-//        string testFile = "test/testCases/NormalisedTest_44100_8_mono.raw";
+//        string testFile = "test/expectedOutputForTests/NormalisedTest_44100_8_mono.raw";
 //        Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channe2,rate2);
 //
 //        REQUIRE(expectedAudio == normalizedResult);
@@ -401,7 +401,7 @@
 //
 //        Audio<pair<int16_t,int16_t>> normalizedResult = audTest.normalize({5000.0,5000.0});
 //
-//        string testFile = "test/testCases/NormalisedTestS_44100_16_stereo.raw";
+//        string testFile = "test/expectedOutputForTests/NormalisedTestS_44100_16_stereo.raw";
 //        Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 //
 //        REQUIRE(expectedAudio == normalizedResult);
@@ -421,7 +421,7 @@
 //            Audio<int8_t> fadeInResult = audTest.fadeIn(10.0); //Fade in for first 10 seconds
 //
 //            //Get expected fade in input
-//            string testFile = "test/testCases/FadeInTest_44100_8_mono.raw";
+//            string testFile = "test/expectedOutputForTests/FadeInTest_44100_8_mono.raw";
 //            Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channe2,rate2);
 //
 //            REQUIRE(expectedAudio == fadeInResult);
@@ -433,7 +433,7 @@
 //            Audio<pair<int16_t,int16_t>> audTest = Audio<pair<int16_t,int16_t>>(fileName,channel,rate);
 //            Audio<pair<int16_t,int16_t>> fadeInResult = audTest.fadeIn(5.0); //Fade in till 5 second mark
 //
-//            string testFile = "test/testCases/FadeInTestS_44100_16_stereo.raw";
+//            string testFile = "test/expectedOutputForTests/FadeInTestS_44100_16_stereo.raw";
 //            Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 //
 //            REQUIRE(expectedAudio == fadeInResult);
@@ -450,7 +450,7 @@
 //            Audio<int8_t> audTest = Audio<int8_t>(fileName2,channe2,rate2);
 //            Audio<int8_t> fadeOutResult = audTest.fadeOut(10.0); //fade out from last 10 seconds
 //
-//            string testFile = "test/testCases/FadeOutTest_44100_8_mono.raw";
+//            string testFile = "test/expectedOutputForTests/FadeOutTest_44100_8_mono.raw";
 //            Audio<int8_t> expectedAudio = Audio<int8_t>(testFile,channe2,rate2);
 //
 //            REQUIRE(expectedAudio == fadeOutResult);
@@ -462,7 +462,7 @@
 //            Audio<pair<int16_t,int16_t>> audTest = Audio<pair<int16_t,int16_t>>(fileName,channel,rate);
 //            Audio<pair<int16_t,int16_t>> fadeOutResult = audTest.fadeOut(5.0); //fade out from last 5 seconds
 //
-//            string testFile = "test/testCases/FadeOutTestS_44100_16_stereo.raw";
+//            string testFile = "test/expectedOutputForTests/FadeOutTestS_44100_16_stereo.raw";
 //            Audio<pair<int16_t,int16_t>> expectedAudio = Audio<pair<int16_t,int16_t>>(testFile,channel,rate);
 //
 //            REQUIRE(expectedAudio == fadeOutResult);
